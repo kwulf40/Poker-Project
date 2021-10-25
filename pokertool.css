@@ -2,5 +2,7 @@
     background-color: green;
     display: flex;
     height: 50px;
-    position: absolute;
+    top: 0;
+    width: 100%;
+    position: fixed;
 }
