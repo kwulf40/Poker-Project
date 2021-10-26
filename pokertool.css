@@ -1,9 +1,54 @@
-.header {
-    background-color: green;
-    display: flex;
+#header {
+    background-color: #0f663b;
     height: 50px;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     width: 100%;
-    position: fixed;
+}
+
+#logo {
+    display: inline-block;
+    font-size: xx-large;
+    color:white;
+    text-decoration: none;
+    width: 20%;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.rightHeader {
+    display: inline-block;
+    font-size:  xx-large;
+    color: white;
+    text-decoration: none;
+    text-align: right;
+    margin-right: 20px;
+    width: 80%;
+    padding: 5px;
+}
+
+#visualContainer {
+    display: inline-block;
+    margin-top: 50px;
+    margin-left: 0px;
+    width: 75%;
+    height: 60%;
+    background-color: grey;
+}
+
+#historyContainer {
+    display: inline-block;
+    margin-top: 50px;
+    width: 25%;
+    height: 60%;
+    margin-left: 75%;
+    background-color: lightgray;
+    text-align: center;
+}
+
+#statsContainer {
+    display: inline-block;
+    background-image: linear-gradient(#0f663b, white); 
+    width: 100%; 
+    margin-left: 0;
 }
