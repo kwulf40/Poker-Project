@@ -1,54 +1,87 @@
 #header {
-    background-color: #0f663b;
-    height: 50px;
+    position: absolute;
     top: 0px;
     left: 0px;
+    height: 50px;
     width: 100%;
+    white-space: nowrap;
+    background-color: #0f663b;
 }
 
 #logo {
-    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
     font-size: xx-large;
-    color:white;
     text-decoration: none;
-    width: 20%;
-    margin-left: 20px;
-    padding: 5px;
+    color:white;
 }
 
-.rightHeader {
-    display: inline-block;
+#login {
+    position: absolute;
+    top: 5px;
+    right: 3%;
     font-size:  xx-large;
-    color: white;
     text-decoration: none;
     text-align: right;
-    margin-right: 20px;
-    width: 80%;
-    padding: 5px;
+    color: white;
+}
+
+#account {
+    position: absolute;
+    top: 5px;
+    right: 3%;
+    font-size:  xx-large;
+    text-decoration: none;
+    text-align: right;
+    color: white;
 }
 
 #visualContainer {
-    display: inline-block;
-    margin-top: 50px;
-    margin-left: 0px;
-    width: 75%;
+    position: absolute;
+    top: 50px;
+    left: 0px;
     height: 60%;
+    width: 75%;
+    float:left;
     background-color: grey;
 }
 
 #historyContainer {
-    display: inline-block;
-    margin-top: 50px;
-    width: 25%;
+    position: absolute;
+    top: 50px;
+    left: 75%;
     height: 60%;
-    margin-left: 75%;
-    background-color: lightgray;
+    width: 25%;
     text-align: center;
+    float:right;
+    background-color: lightgray;
 }
 
 #statsContainer {
-    display: inline-block;
+    clear:both;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height:auto;
     background-image: linear-gradient(#0f663b, white); 
-    width: 100%; 
-    margin-left: 0;
+    overflow-x: scroll;
+}
+
+#statsTable{
+    width: 100%;
+}
+
+#visual {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    font-size: xx-large;
+    padding: 50px;
+    text-align: center;
+    border-bottom: 50px;
 }
