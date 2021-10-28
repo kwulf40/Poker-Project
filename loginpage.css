@@ -1,54 +1,64 @@
-body{
-    background-color: lightgrey;
+body {
+  background-color: lightgrey;
 }
 
 #header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 50px;
-    width: 100%;
-    white-space: nowrap;
-    background-color: #0f663b;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+  white-space: nowrap;
+  background-color: #0f663b;
 }
 
 #logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: xx-large;
+  text-decoration: none;
+  color: white;
 }
 
 #stats {
-    position: absolute;
-    top: 5px;
-    left: 10%;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+  position: absolute;
+  top: 5px;
+  left: 10%;
+  font-size: xx-large;
+  text-decoration: none;
+  color: white;
 }
 
 #login {
-    position: absolute;
-    top: 5px;
-    right: 3%;
-    font-size:  xx-large;
-    text-decoration: none;
-    text-align: right;
-    color: white;
+  position: absolute;
+  top: 5px;
+  right: 3%;
+  font-size: xx-large;
+  text-decoration: none;
+  text-align: right;
+  color: white;
+}
+
+#create {
+  position: absolute;
+  top: 10px;
+  right: 15%;
+  font-size: x-large;
+  text-decoration: none;
+  text-align: right;
+  color: white;
 }
 
 #fullscreenDiv {
-    position: absolute;
-    display: grid;
-    width: 30%;
-    height: 30%;
-    top: 35%;
-    bottom: 35%;
-    left: 35%;
-    right: 35%;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  display: grid;
+  width: 30%;
+  height: 30%;
+  top: 35%;
+  bottom: 35%;
+  left: 35%;
+  right: 35%;
+  justify-content: center;
+  align-items: center;
 }
