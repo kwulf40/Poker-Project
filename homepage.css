@@ -20,6 +20,7 @@ body, html{
 .logo {
     display: block;
     width: 25%;
+    margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
 }
