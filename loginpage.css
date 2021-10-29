@@ -55,15 +55,16 @@ li a:hover {
   background-color: lightgrey;
   opacity: 80%;
   display: grid;
-  width: 15vw;
+  width: 20vw;
   padding: 30px;
   margin-top: 7vh;
   margin-left: auto;
   margin-right: auto;
+  line-height: 2;
 }
 
 input {
-  width: 15vw;
+  width: 20vw;
 }
 
 .label {
@@ -73,9 +74,10 @@ input {
 
 .button {
   transition-duration: 0.4s;
+  /*margin-top: 4em; It's weird, the buttons arent being editted*/
 }
 
 .button:hover {
-  background-color: rgba(32, 32, 32, 0.637);
+  background-color: rgba(20, 20, 20, 0.89);
   color: white;
 }

@@ -70,7 +70,7 @@ h1 {
 }
 
 .Account_Control {
-  background-color: rgba(24, 150, 64, 0.76);
+  background-color: lightgray;
   opacity: 70%;
   display: grid;
   width: 25vw;
