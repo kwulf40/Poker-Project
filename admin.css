@@ -1,0 +1,87 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("Poker-background-2.jpg");
+
+  height: 100%;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homepage-nav {
+  top: 0;
+}
+
+.logo {
+  display: block;
+  width: 25%;
+  margin-top: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f663b;
+}
+
+.homepage {
+  float: left;
+}
+
+.Settings {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+li a:hover {
+  background-color: #064e2a;
+}
+
+input {
+  width: 25vw;
+}
+
+.label {
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+}
+
+h1 {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.Account_Control {
+  background-color: rgba(24, 150, 64, 0.76);
+  opacity: 70%;
+  display: grid;
+  width: 25vw;
+  padding: 28px;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 2;
+}
+
+input {
+  width: 25vw;
+}
