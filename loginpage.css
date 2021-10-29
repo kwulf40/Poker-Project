@@ -1,70 +1,81 @@
-body, html{
-    height: 100%;
-    margin: 0;
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
 .bg {
-    background-image: url("Poker-background-2.jpg");
-  
-    height: 100%;
-  
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("Poker-background-2.jpg");
+
+  height: 100%;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .homepage-nav {
-    top: 0;
+  top: 0;
 }
 
 .logo {
-    display: block;
-    margin-top: 5vh;
-    width: 25%;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-top: 5vh;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #0f663b;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0f663b;
 }
 
 .homepage {
-    float: left;
+  float: left;
 }
 
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 15px 20px;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 15px 20px;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 li a:hover {
-    background-color: #064e2a; 
+  background-color: #064e2a;
 }
 
-.login {    
-    background-color:lightgrey;
-    opacity: 80%;
-    display: grid;
-    width: 15vw;
-    padding: 30px;
-    margin-top: 7vh;
-    margin-left: auto;
-    margin-right: auto;
+.login {
+  background-color: lightgrey;
+  opacity: 80%;
+  display: grid;
+  width: 15vw;
+  padding: 30px;
+  margin-top: 7vh;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 input {
-    width: 15vw;
+  width: 15vw;
 }
 
-label {
-    font-family: Arial, Helvetica, sans-serif;
+.label {
+  /*font-family: Arial, Helvetica, sans-serif;*/
+  font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+}
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: rgba(32, 32, 32, 0.637);
+  color: white;
 }
