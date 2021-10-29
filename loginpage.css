@@ -1,54 +1,68 @@
-body{
-    background-color: lightgrey;
+body, html{
+    height: 100%;
+    margin: 0;
 }
 
-#header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 50px;
-    width: 100%;
-    white-space: nowrap;
+.bg {
+    background-image: url("Poker-background-2.jpg");
+  
+    height: 100%;
+  
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.homepage-nav {
+    top: 0;
+}
+
+.logo {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #0f663b;
 }
 
-#logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+.homepage {
+    float: left;
 }
 
-#stats {
-    position: absolute;
-    top: 5px;
-    left: 10%;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
-}
-
-#login {
-    position: absolute;
-    top: 5px;
-    right: 3%;
-    font-size:  xx-large;
-    text-decoration: none;
-    text-align: right;
+li a {
+    display: block;
     color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;;
 }
 
-#fullscreenDiv {
-    position: absolute;
+li a:hover {
+    background-color: #064e2a; 
+}
+
+.login {    
+    background-color:lightgrey;
+    opacity: 80%;
     display: grid;
-    width: 30%;
-    height: 30%;
-    top: 35%;
-    bottom: 35%;
-    left: 35%;
-    right: 35%;
-    justify-content: center;
-    align-items: center;
+    width: 15vw;
+    padding: 30px;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    width: 15vw;
+}
+label {
+    font-family: Arial, Helvetica, sans-serif;
 }

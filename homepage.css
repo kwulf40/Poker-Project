@@ -1,50 +1,86 @@
-body{
-    background-color: lightgrey;
+body, html{
+    height: 100%;
+    margin: 0;
 }
 
-#header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 50px;
-    width: 100%;
-    white-space: nowrap;
+.bg {
+    background-image: url("Poker-background-2.jpg");
+  
+    height: 100%;
+  
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.homepage-nav {
+    top: 0;
+}
+
+.logo {
+    display: block;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #0f663b;
 }
 
-#logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+.homepage {
+    float: left;
 }
 
-#stats {
-    position: absolute;
-    top: 5px;
-    left: 10%;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+.account{
+    float: right;
 }
 
-#login {
-    position: absolute;
-    top: 5px;
-    right: 3%;
-    font-size:  xx-large;
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
     text-decoration: none;
-    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;;
+}
+
+li a:hover {
+    background-color: #064e2a; 
+}
+
+hgroup {
+    position: sticky;
+    text-align: center;
+    font-family: times;
+    font-style: italic;
     color: white;
 }
 
-#titleText {
-    position: absolute;
-    text-align: center;
-    top: 35%;
-    bottom: 35%;
-    left: 35%;
-    right: 35%;
+h1 {
+    position: inherit;
+    top: 20%;
+    font-size: 2vw;
+}
+
+.features {
+    background-color:lightgrey;
+    opacity: 80%;
+    width: 30vw;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    padding: 30px;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2vh;
 }
