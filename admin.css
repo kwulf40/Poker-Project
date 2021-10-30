@@ -38,6 +38,10 @@ ul {
   float: left;
 }
 
+.tool {
+  float: left;
+}
+
 .Settings {
   float: right;
 }
