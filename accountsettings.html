@@ -7,5 +7,48 @@
         <script src="accountsettings.js"></script>
     </head>
     <body>
+
+        <!-- Header HTML-->
+        <div class="bg">
+            <nav class="homepage-nav">
+                <div>
+                    <ul class="hp-nav-content">
+                        <li class="homepage">
+                            <a href="homepage.html">
+                                <span>
+                                    Home
+                                </span>
+                            </a>
+                        </li>
+                        <li class="admin">
+                            <a href="admin.html" hidden>
+                                <span>
+                                    admin
+                                </span>
+                            </a>
+                        </li>
+                        <li class="tool">
+                            <a href="pokertool.html" hidden>
+                                <span>
+                                    Poker Tool
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- End header HTML-->
+
+            <h1>Account Control</h1>
+
+            <div class = "account">
+                <label>Current Password: 12345</label><br>
+                <label>Change Password: </label>
+                <input type="text" id="PassChange" name="changedPassword"><br>
+                <button type = "submit" id ="Change">Submit</button><br>
+                <button type="submit" id="Reset">Reset Account</button><br>
+            </div>
+
+
     </body>
 </html>
