@@ -13,7 +13,13 @@ body, html{
     background-size: cover;
 }
 
-.homepage-nav {
+@media only screen and (max-height: 500px) {
+    .bg {
+        height:fit-content;
+    }
+}
+
+.login-nav {
     top: 0;
 }
 
@@ -43,11 +49,22 @@ li a {
     text-align: center;
     padding: 15px 20px;
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: 3px solid transparent;
+    transition: 0.15s;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+    li a {
+        font-size: 15px;
+    }
 }
 
 li a:hover {
-    background-color: #064e2a; 
+    background-color: #064e2a;
+    border-bottom: 3px solid white; 
 }
 
 .login {    
@@ -61,10 +78,23 @@ li a:hover {
     margin-right: auto;
 }
 
+.login > #submission {
+    display: grid;
+}
+
 input {
     width: 15vw;
 }
 
 label {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(20, 20, 20, 0.89);
+    color: white;
 }

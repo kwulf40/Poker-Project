@@ -1,87 +1,52 @@
-#header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 50px;
-    width: 100%;
-    white-space: nowrap;
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.poker-tool-nav{
+    top: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
     background-color: #0f663b;
 }
 
-#logo {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    font-size: xx-large;
-    text-decoration: none;
-    color:white;
+.homepage {
+    float: left;
 }
 
-#login {
-    position: absolute;
-    top: 5px;
-    right: 3%;
-    font-size:  xx-large;
-    text-decoration: none;
-    text-align: right;
-    color: white;
+.account-settings{
+    float: right;
 }
 
-#account {
-    position: absolute;
-    top: 5px;
-    right: 3%;
-    font-size:  xx-large;
-    text-decoration: none;
-    text-align: right;
-    color: white;
+.admin-settings {
+    float: right;
 }
 
-#visualContainer {
-    position: absolute;
-    top: 50px;
-    left: 0px;
-    height: 60%;
-    width: 75%;
-    float:left;
-    background-color: grey;
-}
-
-#historyContainer {
-    position: absolute;
-    top: 50px;
-    left: 75%;
-    height: 60%;
-    width: 25%;
-    text-align: center;
-    float:right;
-    background-color: lightgray;
-}
-
-#statsContainer {
-    clear:both;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    width: 100%;
-    height:auto;
-    background-image: linear-gradient(#0f663b, white); 
-    overflow-x: scroll;
-}
-
-#statsTable{
-    width: 100%;
-}
-
-#visual {
+li * {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: 3px solid transparent;
+    transition: 0.15s;
+    cursor: pointer;
 }
 
-td {
-    font-size: xx-large;
-    padding: 50px;
-    text-align: center;
-    border-bottom: 50px;
+@media only screen and (max-width: 800px) {
+    li a {
+        font-size: 15px;
+    }
+}
+
+li *:hover {
+    background-color: #064e2a;
+    border-bottom: 3px solid white; 
 }

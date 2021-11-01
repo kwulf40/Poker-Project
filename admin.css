@@ -1,32 +1,32 @@
-body, html{
+body,html {
     height: 100%;
     margin: 0;
 }
 
 .bg {
     background-image: url("Poker-background-2.jpg");
-  
+
     height: 100%;
-  
+
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-@media only screen and (max-height: 700px), (max-width: 800px) {
+@media only screen and (max-height: 500px) {
     .bg {
-        height: fit-content;
+        height:fit-content;
     }
 }
 
-.homepage-nav {
+.admin-nav {
     top: 0;
 }
 
 .logo {
     display: block;
-    width: 25%;
     margin-top: 5vh;
+    width: 25%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -39,11 +39,15 @@ ul {
     background-color: #0f663b;
 }
 
-.homepage-pokertool {
+.homepage {
     float: left;
 }
 
-.account{
+.pokertool {
+    float: left;
+}
+
+.account-settings {
     float: right;
 }
 
@@ -54,10 +58,6 @@ li a {
     padding: 15px 20px;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    border: 3px solid transparent;
-    transition: 0.15s;
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
@@ -68,37 +68,40 @@ li a {
 
 li a:hover {
     background-color: #064e2a;
-    border-bottom: 3px solid white; 
 }
 
-hgroup {
-    position: sticky;
-    text-align: center;
-    font-family: times;
-    font-style: italic;
+.account-control {
+    background-color: lightgrey;
+    opacity: 80%;
+    display: grid;
+    width: 25vw;
+    padding: 30px;
+    margin-top: 7vh;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 2;
+}
+
+input {
+    width: 24.5vw;
+}
+
+label {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(20, 20, 20, 0.89);
     color: white;
 }
 
 h1 {
-    position: inherit;
-    top: 20%;
-    font-size: 2vw;
-}
-
-.features {
-    background-color:lightgrey;
-    opacity: 80%;
-    width: 30vw;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-p {
-    padding: 25px;
-    text-align: justify;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2vh;
+    top: 30%;
+    font-size: 4vw;
+    text-align: center;
+    color: aliceblue;
 }
