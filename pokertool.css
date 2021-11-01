@@ -1,3 +1,6 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
 body, html {
     height: 100%;
     margin: 0;
@@ -33,7 +36,6 @@ li * {
     text-align: center;
     padding: 15px 20px;
     text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     border: 3px solid transparent;
     transition: 0.15s;
@@ -49,4 +51,134 @@ li * {
 li *:hover {
     background-color: #064e2a;
     border-bottom: 3px solid white; 
+}
+
+.account-info {
+    background-color: #1e8350;
+}
+
+.account-info * {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding: 5px 20px;
+}
+
+.account-info label {
+    color: white;
+    font-size: 15px;
+}
+
+.account-info button {
+    cursor: pointer;
+}
+
+.account-info button:hover {
+    background-color: rgba(20, 20, 20, 0.89);
+    color: white;
+}
+
+@media only screen and (max-width: 1000px) {
+    .account-info label{
+        font-size: 12px;
+    }
+
+    .account-info button {
+        font-size: 12px;
+    }
+}
+
+.middle-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.current-game {
+    width: 75%;
+    float: left;
+    background-image: url("Poker-background-2.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width: 900px) {
+    .middle-content .current-game, .middle-content .prev-games {
+        width: 100%;
+    }
+}
+
+.current-game div {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    padding: 30px;
+    width: 75%;
+}
+
+.current-game .cards {
+    background-color: #e2e2e2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 900px) {
+    #endGameBtn {
+        width: 200px;
+    }
+    .cards div{
+        padding: 10px;
+        display: grid;
+    }
+}
+
+.cards div button {
+    cursor: pointer;
+}
+
+.cards div button:hover {
+    background-color: rgba(20, 20, 20, 0.89);
+    color: white;
+}
+
+.prev-games {
+    background-color: #c7c7c7;
+    width: 25%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.prev-games div {
+    width: 100%;
+    padding: 20px;
+    flex: 1 0 20%;
+    background-image:linear-gradient(white, lightgrey)
+}
+
+.stats-table {
+    background-color: #064e2a;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    width: 100%;
+    height: 50%;
+}
+
+.stats-table div {
+    flex: 1 0 25%;
+    font-size: 20px;
+    padding: 50px 50px;
+    background-image:linear-gradient(#0f663b, white)
 }

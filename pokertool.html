@@ -1,39 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Poker Tool</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href = "pokertool.css"/>
-    <script src="pokertool.js"></script>
+    <head>
+        <title>Poker Tool</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href = "pokertool.css"/>
+        <script src="pokertool.js"></script>
 
-</head>
-<body>
-    <nav class="pokertool-navbar">
-        <ul class="poker-tool-nav">
-            <li class="homepage">
-                <a class="navbar-option" href="homepage.html">
-                    Home
-                </a>
-            </li>
-            <li class="account-settings">
-                <a href="accountsettings.html">
-                    Account Settings
-                </a>
-            </li>
-            <li class="admin-settings">
-                <a href="admin.html">
-                    Admin Settings
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <main>
-
-    </main>
-    <footer>
-
-    </footer>
-</body>
+    </head>
+    <body>
+        <nav class="pokertool-navbar">
+            <ul class="poker-tool-nav">
+                <li class="homepage">
+                    <a class="navbar-option" href="homepage.html">
+                        Home
+                    </a>
+                </li>
+                <li class="account-settings">
+                    <a href="accountsettings.html">
+                        Account Settings
+                    </a>
+                </li>
+                <li class="admin-settings">
+                    <a href="admin.html">
+                        Admin Settings
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="account-info">
+            <span>
+                <label>
+                    Username: xxxxxxx
+                </label>
+                <button type="button" id="logoutBtn" onclick="">Logout</button>
+            </span>
+        </div>
+        <main class="middle-content">
+            <div class="current-game">
+                <div class="game-table">
+                    <!-- TODO
+                    Have to figure out how to display the cards
+                    on the game table. Need to know how to stack
+                    images on top of each other without messing
+                    up the format of the container
+                     -->
+                    <!-- <div class="table"> -->
+                        <img class="table"src="game-table.png">
+                    <!-- </div> -->
+                    <!-- <div class="table-card">
+                        <img src="poker-cards/jack_of_clubs.png">
+                        <img src="poker-cards/ace_of_spades.png">
+                        <img src="poker-cards/8_of_clubs.png">
+                    </div>
+                    <div class="hand-card">
+                        <img class="hand-card" src="poker-cards/jack_of_spades.png">
+                        <img class="hand-card" src="poker-cards/ace_of_clubs.png">
+                    </div> -->
+                </div>
+                <div class="cards">
+                    <div>
+                        <label>Please enter your cards on hand:</label>
+                        <input type="text" id="HandCards" name="CardsOnHand">
+                        <button type="submit" id="submitHandCards" onclick="">Enter Cards</button>
+                    </div>
+                    <div>
+                        <label>Please enter the first/next card on the table:</label>
+                        <input type="text" id="BoardCards" name="CardsOnTable">
+                        <button type="submit" id="submitTableCard" onclick="">Enter Card</button>
+                    </div>
+                    <div>
+                        <button type="button" id="endGameBtn" onclick="">End Game</button>
+                    </div>
+                </div>
+            </div>
+            <div class="prev-games">
+                <div>
+                    <b>PLACEHOLDER</b><br>
+                    Game: 1 <br>
+                    Hand: AD 9H <br>
+                    Table: 5C 7D KD 3S 7H <br>
+                </div>
+                <div>
+                    <b>PLACEHOLDER</b><br>
+                    Game: 2 <br>
+                    Hand: 3C 6S <br>
+                    Table: JH QD JD 7H 8S <br>
+                </div>
+                <div>
+                    <b>PLACEHOLDER</b><br>
+                    Game: 3 <br>
+                    Hand: 10S 10H <br>
+                    Table: 8H 10D 9H 7H 10C <br>
+                </div>
+                <div>
+                    <b>PLACEHOLDER</b><br>
+                    Game: 4 <br>
+                    Hand: 4H AC <br>
+                    Table: 5S 10H <br>
+                </div>
+                <div>
+                    <b>PLACEHOLDER</b><br>
+                    Game: 5 <br>
+                    Hand: 2S 7J <br>
+                    Table: NA <br>
+                </div>
+            </div>
+        </main>
+        <footer class="stats-table">
+            <div>
+                Game: 1 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 2 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 3 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 4 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 5 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 6 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 7 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 8 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+            <div>
+                Game: 9 <br>
+                HAND STATS: TBD <br>
+                GAME STATS: TBD <br>
+            </div>
+        </footer>
+    </body>
 </html>
