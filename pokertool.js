@@ -31,7 +31,7 @@ function submitHand() {
 
 function submitTable() {
     var phase = 1;
-    var tableString = document.getElementById("HandCards").value;
+    var tableString = document.getElementById("BoardCards").value;
 
     /*
     Validate the incoming string to ensure correct format.
