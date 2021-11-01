@@ -3,9 +3,47 @@
     <head>
         <title>Account Settings Page</title>
         <meta charset = "utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href = "accountsettings.css"/>
         <script src="accountsettings.js"></script>
     </head>
     <body>
+        <!-- Header HTML-->
+        <div class="bg">
+            <nav class="account-settings-nav">
+                <ul class="as-nav-content">
+                    <li class="homepage">
+                        <a href="homepage.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="tool">
+                        <a href="pokertool.html" hidden>
+                            Poker Tool
+                        </a>
+                    </li>
+                    <li class="admin">
+                        <a href="admin.html" hidden>
+                            Admin Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End header HTML-->
+            <h1>Account Control</h1>
+            <div class="account-control">
+                <label>Account Name: xxxxxx</label><br>
+                <label>Account Created: xx/xx/xxxx</label><br>
+                <label>Current Password: xxxxxxxx</label><br>
+                <form id="submission">
+                    <label>Change Password:</label>
+                    <input type="text" id="passwordChange"><br>
+                    <button type="submit" id="submitBtn">Submit</button><br><br>
+                </form>
+                <button type="button" id="resetAccount" onclick="">Reset Account</button><br><br>
+                <button type="button" id="logoutBtn" onclick="">Logout</button><br>
+            </div>
+        </div>
     </body>
 </html>

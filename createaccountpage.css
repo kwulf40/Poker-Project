@@ -13,20 +13,20 @@ body, html{
     background-size: cover;
 }
 
-@media only screen and (max-height: 700px), (max-width: 800px) {
+@media only screen and (max-height: 500px) {
     .bg {
-        height: fit-content;
+        height:fit-content;
     }
 }
 
-.homepage-nav {
+.create-account-nav {
     top: 0;
 }
 
 .logo {
     display: block;
-    width: 25%;
     margin-top: 5vh;
+    width: 25%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -39,12 +39,8 @@ ul {
     background-color: #0f663b;
 }
 
-.homepage-pokertool {
+.homepage {
     float: left;
-}
-
-.account{
-    float: right;
 }
 
 li a {
@@ -71,34 +67,34 @@ li a:hover {
     border-bottom: 3px solid white; 
 }
 
-hgroup {
-    position: sticky;
-    text-align: center;
-    font-family: times;
-    font-style: italic;
-    color: white;
-}
-
-h1 {
-    position: inherit;
-    top: 20%;
-    font-size: 2vw;
-}
-
-.features {
+.createAccount {    
     background-color:lightgrey;
     opacity: 80%;
-    width: 30vw;
-    height: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    display: grid;
+    width: 15vw;
+    padding: 30px;
+    margin-top: 7vh;
     margin-left: auto;
     margin-right: auto;
 }
 
-p {
-    padding: 25px;
-    text-align: justify;
+.createAccount > #submission{
+    display: grid;
+}
+
+input {
+    width: 15vw;
+}
+
+label {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2vh;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(20, 20, 20, 0.89);
+    color: white;
 }
