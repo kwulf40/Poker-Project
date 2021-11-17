@@ -53,39 +53,19 @@ li *:hover {
     border-bottom: 3px solid white; 
 }
 
-.account-info {
-    background-color: #1e8350;
+.gameHistory{
+
+    justify-content: center;
 }
 
-.account-info * {
+#historySearch {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: right;
-    padding: 5px 20px;
 }
 
-.account-info label {
-    color: white;
-    font-size: 15px;
-}
-
-.account-info button {
-    cursor: pointer;
-}
-
-.account-info button:hover {
-    background-color: rgba(20, 20, 20, 0.89);
-    color: white;
-}
-
-@media only screen and (max-width: 1000px) {
-    .account-info label{
-        font-size: 12px;
-    }
-
-    .account-info button {
-        font-size: 12px;
-    }
+#searchButton {
+    display: flex;
+    justify-content: center;
 }
 
 .middle-content {
@@ -96,7 +76,7 @@ li *:hover {
 .current-game {
     width: 75%;
     float: left;
-    background-image: url("Poker-background-2.jpg");
+    background-image: url("site-images/Poker-background-2.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -161,9 +141,9 @@ li *:hover {
 }
 
 .prev-games div {
-    width: 100%;
     padding: 20px;
-    flex: 1 0 20%;
+    flex-wrap: wrap;
+    display: flex;
     background-image:linear-gradient(white, lightgrey)
 }
 
