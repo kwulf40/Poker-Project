@@ -44,7 +44,75 @@
                 mysqli_stmt_close($submitStatement);
             }
         }
+           
+    // Validate password
+    if(empty(trim($_POST["password"]))){
+        $passwordError = "Please enter a password.";     
+    } 
+    elseif(strlen(trim($_POST["password"])) < 4){
+        $passwordError = "Password must have atleast 4 characters.";
+    } 
+    else{
+        $password = trim($_POST["password"]);
     }
+    
+    // Validate confirm password
+    if(empty(trim($_POST["confirmPassword"]))){
+        $confirmPasswordError = "Please confirm password.";     
+    } 
+    else{
+        $confirmPassword= trim($_POST["confirmPassword"]);
+        if(empty($passwordError) && ($password != $confirmPassword)){
+            $confirmPasswordError = "Password did not match.";
+        }
+    }
+
+    //Check for Admin Password
+    if(empty(trim($_POST["adminPassword"]))){
+        $adminPasswordBool = 0;
+    }
+    else{
+        $submitAdminPassword = trim($_POST["adminPassword"]);
+        if ($submitAdminPassword == "BrightBurger"){
+            $adminPasswordBool = 1;
+        }
+        else{
+            $adminPasswordBool = 0;
+            $adminPasswodError = "Admin Password Incorrect";
+        }
+    }
+    
+    // Check input errors before inserting in database
+    if(empty($usernameError && empty($passwordError) && empty($confirmPasswordError)){
+        
+        // Prepare an insert statement
+        $sql = "INSERT INTO USERS (username, password, admin) VALUES (?, ?, ?)";
+         
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ssi", $submitFinalUsername, $submitFinalPassword, $submitAdminBool);
+            
+            // Set parameters
+            $submitFinalUsername = $username;
+            $submitFinalPassword = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+            $submitAdminBool = $adminPasswordBool;
+
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Redirect to login page
+                header("location: homepage.html");
+            } 
+            else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    //Close connection
+    mysqli_close($link);
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -70,7 +138,7 @@
             <div>
                 <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
-            <div class="createAccount">
+            <div class="createAccount" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <!-- TODO
                 No actions for the form at this point.
                 Create one when the database is setup. -->
