@@ -19,7 +19,7 @@
         }
         else{
             // Prepare a select statement
-            $sqlStatement = "SELECT id FROM USERS WHERE username = ?";
+            $sqlStatement = "SELECT id FROM USERS WHERE username=?";
             
             if($submitStatement = mysqli_prepare($link, $sqlStatement)){
                 //Bind Variables to statment
@@ -32,7 +32,7 @@
                 if(mysqli_stmt_execute($submitStatement)){
                     mysqli_stmt_store_result($submitStatement);
                     if(mysqli_stmt_num_rows($submitStatement) == 1){
-                        $userError = "This username is already taken.";
+                        $usernameError = "This username is already taken.";
                     } 
                     else{
                         $username = trim($_POST["username"]);
@@ -83,7 +83,7 @@
     }
     
     // Check input errors before inserting in database
-    if(empty($usernameError && empty($passwordError) && empty($confirmPasswordError)){
+    if(empty($usernameError) && empty($passwordError) && empty($confirmPasswordError)){
         
         // Prepare an insert statement
         $sql = "INSERT INTO USERS (username, password, admin) VALUES (?, ?, ?)";
@@ -105,7 +105,6 @@
             else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
             // Close statement
             mysqli_stmt_close($stmt);
         }
@@ -122,12 +121,12 @@
         <meta charset = "utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href = "createaccountpage.css"/>
-        <script src="createaccountpage.js"></script>
+        <!--script src="createaccountpage.js"></script-->
     </head>
     <body>
         <div class="bg">
             <nav class="create-account-nav">
-                <ul class="ca-nav-content">
+				<ul class="ca-nav-content">
                     <li class="homepage">
                         <a href="homepage.html">
                             Home
@@ -138,11 +137,11 @@
             <div>
                 <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
-            <div class="createAccount" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="createAccount">
                 <!-- TODO
                 No actions for the form at this point.
                 Create one when the database is setup. -->
-                <form id="submission">
+                <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Create New Username:</label>
                     <input type="text" id="newUsername" name="username"><br>
                     <label>Create New Password:</label>
@@ -155,7 +154,7 @@
                     Change the onclick functionality for the submit button have the js check with the database.
                     If the username and password passed is not already there, then save them. If there are then create an alert.
                     -->
-                    <button type="submit" id="submitBtn">Submit</button><br>
+                    <input type="submit" class="button" id="submitBtn" value="Submit"><br>
                 </form>
                 <label>Already have an account?</label><br>
                 <button id="loginPage" onclick="window.location.href='loginpage.html';">Go to Login</button>
