@@ -143,12 +143,16 @@
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Create New Username:</label>
                     <input type="text" id="newUsername" name="username"><br>
+                    <span class="submitFeedback"><?php echo $usernameError; ?></span>
                     <label>Create New Password:</label>
                     <input type="text" id="newPassword" name="password"><br>
+                    <span class="submitFeedback"><?php echo $passwordError; ?></span>
                     <label>Confirm Your New Password:</label>
                     <input type="text" id="confirmNewPassword" name="confirmPassword"><br>
+                    <span class="submitFeedback"><?php echo $confirmPasswordError; ?></span>
                     <label>Enter admin code to create admin account:</label>
                     <input type="text" id="adminPassword" name="adminPassword"><br>
+                    <span class="submitFeedback"><?php echo $adminPasswordError; ?></span>
                     <!-- TODO
                     Change the onclick functionality for the submit button have the js check with the database.
                     If the username and password passed is not already there, then save them. If there are then create an alert.
