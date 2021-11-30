@@ -88,9 +88,9 @@
         // Prepare an insert statement
         $sql = "INSERT INTO USERS (username, password, admin) VALUES (?, ?, ?)";
          
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($insertStatement = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssi", $submitFinalUsername, $submitFinalPassword, $submitAdminBool);
+            mysqli_stmt_bind_param($insertStatement, "ssi", $submitFinalUsername, $submitFinalPassword, $submitAdminBool);
             
             // Set parameters
             $submitFinalUsername = $username;
@@ -98,15 +98,20 @@
             $submitAdminBool = $adminPasswordBool;
 
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: homepage.html");
+            if(mysqli_stmt_execute($insertStatement)){
+                session_start();
+                            
+                // Store data in session variables
+                $_SESSION["loggedIn"] = true;
+                $_SESSION["username"] = $username;  
+                // Redirect to homepage
+                header("location: homepage.php");
             } 
             else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
             // Close statement
-            mysqli_stmt_close($stmt);
+            mysqli_stmt_close($insertStatement);
         }
     }
     //Close connection
@@ -127,7 +132,7 @@
             <nav class="create-account-nav">
 				<ul class="ca-nav-content">
                     <li class="homepage">
-                        <a href="homepage.html">
+                        <a href="homepage.php">
                             Home
                         </a>
                     </li>

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE HTML>
 <html lang = "en">
     <head>
@@ -22,16 +26,24 @@
                             Poker Tool
                         </a>
                     </li>
-                    <li class="account">
-                        <a href="createaccountpage.php">
-                            Create Account
-                        </a>
-                    </li>
-                    <li class="account">
-                        <a href="loginpage.html">
-                            Login
-                        </a>
-                    </li>
+                    <?php
+                    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+                        echo "<li class=\"account\">";
+                        echo "<span>Welcome, " . htmlspecialchars($_SESSION["username"]) . "!</span>";
+                        echo "</li>";
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"logoutpage.php\">Logout</a>";
+                        echo "</li>";
+                    }
+                    else {
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"createaccountpage.php\">Create Account</a>";
+                        echo "</li>";
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"loginpage.html\">Login</a>";
+                        echo "</li>";
+                    }
+                    ?>
                 </ul>
             </nav>
             <!-- End header HTML-->
