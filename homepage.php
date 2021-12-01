@@ -29,7 +29,7 @@
                     <?php
                     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
                         echo "<li class=\"account\">";
-                        echo "<span>Welcome, " . htmlspecialchars($_SESSION["username"]) . "!</span>";
+                        echo "<a href=\"accountsettings.html\">Welcome, " . htmlspecialchars($_SESSION["username"]) . "!</a>";
                         echo "</li>";
                         echo "<li class=\"account\">";
                         echo "<a href=\"logoutpage.php\">Logout</a>";

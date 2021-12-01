@@ -1,3 +1,15 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+    header("location: homepage.php");
+    exit;
+}
+
+?>
+
 <!DOCTYPE HTML>
 <html lang = "en">
     <head>
