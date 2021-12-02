@@ -19,14 +19,14 @@
         }
         else{
             // Prepare a select statement
-            $sqlStatement = "SELECT id FROM USERS WHERE username=?";
+            $sqlUserCheckStatement = "SELECT id FROM USERS WHERE username=?";
             
-            if($submitStatement = mysqli_prepare($link, $sqlStatement)){
+            if($submitStatement = mysqli_prepare($link, $sqlUserCheckStatement)){
                 //Bind Variables to statment
-                mysqli_stmt_bind_param($submitStatement, "s", $submitUsername);
+                mysqli_stmt_bind_param($submitStatement, "s", $submitCheckUsername);
                 
-                //Prepare Statment Parameter
-                $submitUsername = trim($_POST["username"]);
+                //Prepare Statment Variable
+                $submitCheckUsername = trim($_POST["username"]);
                 
                 //Submit SQL Statment
                 if(mysqli_stmt_execute($submitStatement)){
@@ -68,6 +68,14 @@
     }
 
     //Check for Admin Password
+
+    /**
+     * TODO - 
+     * INSTRUCTIONS TO LEAVE ADMIN BLANK IF UNKNOWN
+     * ERROR STATEMENT IF ADMIN FIELD IS FILLED BUT WRONG
+     * ADMIN ACCOUNT CREATED MESSAGE IF CORRECT
+     */
+
     if(empty(trim($_POST["adminPassword"]))){
         $adminPasswordBool = 0;
     }
@@ -89,33 +97,53 @@
         $sql = "INSERT INTO USERS (username, password, admin) VALUES (?, ?, ?)";
          
         if($insertStatement = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
+            // Bind variables
             mysqli_stmt_bind_param($insertStatement, "ssi", $submitFinalUsername, $submitFinalPassword, $submitAdminBool);
             
-            // Set parameters
+            // Set variables
             $submitFinalUsername = $username;
             $submitFinalPassword = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             $submitAdminBool = $adminPasswordBool;
 
-            // Attempt to execute the prepared statement
+            //Attempt to execute the prepared statement
             if(mysqli_stmt_execute($insertStatement)){
-                session_start();
+
+                //If the statement executes successfully, create a new statement to retrieve newly created ID value.
+                $sqlAccountInfoSelect = "SELECT id FROM USERS WHERE username=?";
+                
+                if($accountSelectStatement = mysqli_prepare($link, $sqlAccountInfoSelect)){
+                    //Bind Variables to statment
+                    mysqli_stmt_bind_param($accountSelectStatement, "s", $insertedUsername);
+                    
+                    //Prepare Statment Parameter
+                    $insertedUsername = trim($_POST["username"]);
+                    
+                    //Submit SQL Statment
+                    if(mysqli_stmt_execute($accountSelectStatement)){
+                        mysqli_stmt_store_result($accountSelectStatement);
+                        mysqli_stmt_bind_result($accountSelectStatement, $id);
+
+                        session_start();
                             
-                // Store data in session variables
-                $_SESSION["loggedIn"] = true;
-                $_SESSION["username"] = $username;  
-                // Redirect to homepage
-                header("location: homepage.php");
-            } 
-            else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
+                        // Store data in session variables
+                        $_SESSION["loggedIn"] = true;
+                        $_SESSION["id"] = $id;
+                        $_SESSION["username"] = $username;  
+                        // Redirect to homepage
+                        header("location: homepage.php");
+                        mysqli_stmt_close($accountSelectStatement);
+                    }
+                } 
+                else{
+                    echo "Oops! Something went wrong. Please try again later.";
+                }
             // Close statement
             mysqli_stmt_close($insertStatement);
+            }
         }
-    }
     //Close connection
     mysqli_close($link);
+    }
 }
 ?>
 
@@ -130,7 +158,7 @@
     <body>
         <div class="bg">
             <nav class="create-account-nav">
-				<ul class="ca-nav-content">
+			    <ul class="ca-nav-content">
                     <li class="homepage">
                         <a href="homepage.php">
                             Home
@@ -142,30 +170,32 @@
                 <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
             <div class="createAccount">
-                <!-- TODO
-                No actions for the form at this point.
-                Create one when the database is setup. -->
+                <!--New Account Submission Form-->
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <!--New Username Section-->
                     <label>Create New Username:</label>
                     <input type="text" id="newUsername" name="username"><br>
                     <span class="submitFeedback"><?php echo $usernameError; ?></span>
+
+                    <!--New Password Section-->
                     <label>Create New Password:</label>
                     <input type="text" id="newPassword" name="password"><br>
                     <span class="submitFeedback"><?php echo $passwordError; ?></span>
+
+                    <!--Confirm Password Section-->
                     <label>Confirm Your New Password:</label>
                     <input type="text" id="confirmNewPassword" name="confirmPassword"><br>
                     <span class="submitFeedback"><?php echo $confirmPasswordError; ?></span>
+
+                    <!--Admin Password Section-->
                     <label>Enter admin code to create admin account:</label>
                     <input type="text" id="adminPassword" name="adminPassword"><br>
                     <span class="submitFeedback"><?php echo $adminPasswordError; ?></span>
-                    <!-- TODO
-                    Change the onclick functionality for the submit button have the js check with the database.
-                    If the username and password passed is not already there, then save them. If there are then create an alert.
-                    -->
+
                     <input type="submit" class="button" id="submitBtn" value="Submit"><br>
                 </form>
                 <label>Already have an account?</label><br>
-                <button id="loginPage" onclick="window.location.href='loginpage.html';">Go to Login</button>
+                <button id="loginPage" onclick="window.location.href='loginpage.php';">Go to Login</button>
             </div>
         </div>
     </body>

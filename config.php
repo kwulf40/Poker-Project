@@ -10,10 +10,6 @@ $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
  
 // Check connection
 if($link === false){
-    echo "<p>why</p>";
     die("<p>Unable to connect to database server.</p> " . "<p>Database Error Code " . mysqli_connect_errno() . ": " . mysqli_connect_error() . "</p>");
-}
-else {
-    echo "<p>yay</p>";
 }
 ?>

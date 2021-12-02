@@ -9,7 +9,6 @@
         <meta charset = "utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href = "homepage.css"/>
-        <script src="homepage.js"></script>
     </head>
     <body>
         <div class="bg">
@@ -40,7 +39,7 @@
                         echo "<a href=\"createaccountpage.php\">Create Account</a>";
                         echo "</li>";
                         echo "<li class=\"account\">";
-                        echo "<a href=\"loginpage.html\">Login</a>";
+                        echo "<a href=\"loginpage.php\">Login</a>";
                         echo "</li>";
                     }
                     ?>
