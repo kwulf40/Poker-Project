@@ -122,6 +122,7 @@
                     if(mysqli_stmt_execute($accountSelectStatement)){
                         mysqli_stmt_store_result($accountSelectStatement);
                         mysqli_stmt_bind_result($accountSelectStatement, $id, $adminBool);
+                        mysqli_stmt_fetch($accountSelectStatment);
 
                         session_start();
                             

@@ -10,7 +10,7 @@
             /**
              * Add check for self account delete
              */
-            $deleteUsername = trim($_POST["delete"]);
+            $deleteUsername = trim($_POST["deleteText"]);
             $userCheck = verifyUsername($link, $deleteUsername);
             if ($userCheck == true){
                 $sqlDeleteStatement = "DELETE FROM USERS WHERE username=?";
