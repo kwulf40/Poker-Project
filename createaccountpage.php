@@ -109,7 +109,7 @@
             if(mysqli_stmt_execute($insertStatement)){
 
                 //If the statement executes successfully, create a new statement to retrieve newly created ID value.
-                $sqlAccountInfoSelect = "SELECT id FROM USERS WHERE username=?";
+                $sqlAccountInfoSelect = "SELECT id, admin FROM USERS WHERE username=?";
                 
                 if($accountSelectStatement = mysqli_prepare($link, $sqlAccountInfoSelect)){
                     //Bind Variables to statment
@@ -121,14 +121,15 @@
                     //Submit SQL Statment
                     if(mysqli_stmt_execute($accountSelectStatement)){
                         mysqli_stmt_store_result($accountSelectStatement);
-                        mysqli_stmt_bind_result($accountSelectStatement, $id);
+                        mysqli_stmt_bind_result($accountSelectStatement, $id, $adminBool);
 
                         session_start();
                             
                         // Store data in session variables
                         $_SESSION["loggedIn"] = true;
                         $_SESSION["id"] = $id;
-                        $_SESSION["username"] = $username;  
+                        $_SESSION["username"] = $username;
+                        $_SESSION["admin"] = $adminBool;  
                         // Redirect to homepage
                         header("location: homepage.php");
                         mysqli_stmt_close($accountSelectStatement);

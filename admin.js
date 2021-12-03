@@ -3,24 +3,44 @@ window.onload = document.addEventListener("DOMContentLoaded", initializeValues);
 function initializeValues() {
     document.getElementById("deleteSubmit").addEventListener("click", deleteAccount);
     document.getElementById("resetSubmit").addEventListener("click", resetAccount);
+    document.getElementById("adminSubmit").addEventListener("click", giveAdmin);
 }
 
 function deleteAccount() {
-    var account = document.getElementById("Delete").value;
+    var deleteForm = document.getElementById("deletion");
+    var deleteAccountName = document.getElementById("deleteText").value;
 
-    /*
-    Confirm with admin.
-
-    If yes, send account string to database, check if it exists, and delete the user if the name is found.
-    */
+    var confirmBox = confirm("Are you sure you want to delete " + deleteAccountName + "?");
+    if(confirmBox == true){
+        deleteForm .submit();
+    }
+    else{
+        deleteForm .reset();
+    }
 }
 
 function resetAccount() {
-    var account = document.getElementById("Reset").value;
+    var resetForm  = document.getElementById("reset");
+    var resetAccountName = document.getElementById("resetText").value;
 
-    /*
-    Confirm with admin.
+    var confirmBox = confirm("Are you sure you want to reset " + resetAccountName + "?");
+    if(confirmBox == true){
+        resetForm.submit();
+    }
+    else{
+        resetForm.reset();
+    }
+}
 
-    If yes, send account string to database, check if it exists, and reset the user back to a fresh start.
-    */
+function giveAdmin() {
+    var adminForm  = document.getElementById("admin");
+    var elevatedAccountName = document.getElementById("giveAdminText").value;
+
+    var confirmBox = confirm("Are you sure you want to grant admin rights to " + elevatedAccountName + "?");
+    if(confirmBox == true){
+        adminForm.submit();
+    }
+    else{
+        adminForm.reset();
+    }
 }

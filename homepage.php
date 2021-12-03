@@ -16,7 +16,7 @@
             <nav class="homepage-nav">
                 <ul class="hp-nav-content">
                     <li class="homepage-pokertool">
-                        <a href="homepage.html">
+                        <a href="homepage.php">
                             Home
                         </a>
                     </li>
@@ -28,11 +28,19 @@
                     <?php
                     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
                         echo "<li class=\"account\">";
-                        echo "<a href=\"accountsettings.html\">Welcome, " . htmlspecialchars($_SESSION["username"]) . "!</a>";
+                        echo "<a href=\"accountsettings.html\">Welcome, ".htmlspecialchars($_SESSION["username"])."!</a>";
                         echo "</li>";
                         echo "<li class=\"account\">";
                         echo "<a href=\"logoutpage.php\">Logout</a>";
                         echo "</li>";
+                        echo "<li class=\"account\">";
+                        echo "<span>".htmlspecialchars($_SESSION["admin"])."</span>";
+                        echo "</li>";
+                        if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                            echo "<li class=\"account\">";
+                            echo "<a href=\"admin.php\">Admin</a>";
+                            echo "</li>";
+                        }
                     }
                     else {
                         echo "<li class=\"account\">";

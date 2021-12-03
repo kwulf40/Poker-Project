@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(empty($usernameError) && empty($passwordError)){
             //Prepare a select statement
-            $sql = "SELECT id, username, password FROM USERS WHERE username = ?";
+            $sql = "SELECT id, username, password, admin FROM USERS WHERE username = ?";
             
             if($submitStatement = mysqli_prepare($link, $sql)){
                 //Bind variables to the statement
@@ -50,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //Check if username exists, if yes then verify password
                     if(mysqli_stmt_num_rows($submitStatement) == 1){                    
                         //Bind result variables
-                        mysqli_stmt_bind_result($submitStatement, $id, $username, $passwordHash);
+                        mysqli_stmt_bind_result($submitStatement, $id, $username, $passwordHash, $adminBool);
                         
                         if(mysqli_stmt_fetch($submitStatement)){
                             if(password_verify($password, $passwordHash)){
@@ -60,7 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 // Store data in session variables
                                 $_SESSION["loggedIn"] = true;
                                 $_SESSION["id"] = $id;
-                                $_SESSION["username"] = $username;                            
+                                $_SESSION["username"] = $username;
+                                $_SESSION["admin"] = $adminBool;                             
                                 
                                 // Redirect user to welcome page
                                 header("location: homepage.php");
