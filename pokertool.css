@@ -96,9 +96,78 @@ li *:hover {
     justify-content: center;
 }
 
+.game-table {
+    position: relative;
+}
+
 .table {
     padding: 30px;
     width: 75%;
+}
+
+.table-card {
+    position: absolute;
+    height: 6vw;
+    top: 8vw;
+}
+
+#flopOne {
+    left: 20vw;
+}
+
+#flopTwo {
+    left: 27.5vw;
+}
+
+#turn {
+    left: 42.5vw;
+}
+
+#river {
+    left: 50vw;
+} 
+
+.hand-card {
+    position: absolute;
+    height: 6vw;
+    top: 17vw;
+}
+
+#cardOne {
+    left: 32vw;
+}
+
+#cardTwo {
+    left: 38vw;
+}
+
+@media only screen and (max-width: 900px) {
+    .table-card {
+        height: 8vw;
+        top: 15vw;
+    }
+    #flopOne {
+        left: 25vw;
+    }
+    #flopTwo {
+        left: 35.5vw;
+    }
+    #turn {
+        left: 55.5vw;
+    }
+    #river {
+        left: 66vw;
+    }
+    .hand-card {
+        height: 8vw;
+        top: 25vw;
+    }
+    #cardOne {
+        left: 41.5vw;
+    }
+    #cardTwo {
+        left: 50vw;
+    }
 }
 
 .current-game .cards {
