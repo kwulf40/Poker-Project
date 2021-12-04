@@ -19,15 +19,17 @@ $loginError = "";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
         //Check if username is empty
         if(empty(trim($_POST["username"]))){
-            $usernameError = "Please enter username.";
-        } else{
+            $usernameError = "Please enter a username.";
+        } 
+        else{
             $username = trim($_POST["username"]);
         }
         
         //Check if password is empty
         if(empty(trim($_POST["password"]))){
-            $passwordError = "Please enter your password.";
-        } else{
+            $passwordError = "Please enter a password.";
+        } 
+        else{
             $password = trim($_POST["password"]);
         }
 
@@ -65,12 +67,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 
                                 // Redirect user to welcome page
                                 header("location: homepage.php");
-                            } else{
+                            } 
+                            else{
                                 // Password is not valid, display a generic error message
                                 $loginError = "Invalid username or password.";
                             }
                         }
-                    } else{
+                    } 
+                    else{
                         // Username doesn't exist, display a generic error message
                         $loginError = "Invalid username or password.";
                     }
@@ -99,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <nav class="login-nav">
                 <ul class="login-nav-content">
                     <li class="homepage">
-                        <a href="homepage.html">
+                        <a href="homepage.php">
                             Home
                         </a>
                     </li>

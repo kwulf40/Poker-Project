@@ -28,13 +28,10 @@
                     <?php
                     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
                         echo "<li class=\"account\">";
-                        echo "<a href=\"accountsettings.html\">Welcome, ".htmlspecialchars($_SESSION["username"])."!</a>";
+                        echo "<a href=\"accountsettings.php\">Welcome, ".htmlspecialchars($_SESSION["username"])."!</a>";
                         echo "</li>";
                         echo "<li class=\"account\">";
                         echo "<a href=\"logoutpage.php\">Logout</a>";
-                        echo "</li>";
-                        echo "<li class=\"account\">";
-                        echo "<span>".htmlspecialchars($_SESSION["admin"])."</span>";
                         echo "</li>";
                         if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
                             echo "<li class=\"account\">";

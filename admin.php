@@ -267,7 +267,7 @@
                         </a>
                     </li>
                     <li class="account-settings">
-                        <a href="accountsettings.html">
+                        <a href="accountsettings.php">
                             Account Settings
                         </a>
                     </li>
