@@ -129,7 +129,7 @@
             if($tableData = mysqli_query($link, $sqlAdminLogSelectStatement, MYSQLI_USE_RESULT)){
                 while ($row = mysqli_fetch_row($tableData)){
                     $logTableHTML = "<tr>";
-                    for($i=0;$i<=4;$i++){
+                    for($i=0;$i<=3;$i++){
                         $logTableHTML .= "<td>".$row[$i]."</td>";
                     }
                     $logTableHTML .= "</tr>";
