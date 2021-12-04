@@ -56,6 +56,25 @@
                                 mysqli_stmt_bind_param($gameDeleteStatement, "s", $id);
                                 if(mysqli_stmt_execute($gameDeleteStatement)){
                                     $resetResultMessage="Reset Successful!";
+
+                                    $sqlResetLogStatement="INSERT INTO ADMIN (USER_ID, ACTION_NAME, ACTION_DESC, TIME) VALUES (?,?,?,NOW())";
+                                    if($resetLogStatement = mysqli_prepare($link, $sqlResetLogStatement)){
+                                        mysqli_stmt_bind_param($resetLogStatement, "sss", $adminID, $action, $actionDesc);
+            
+                                        $adminID=$_SESSION["id"];
+                                        $action="Reset Account";
+                                        $actionDesc=$_SESSION["username"]." resets ".$resetUsername;
+            
+                                        if(mysqli_stmt_execute($resetLogStatement)){
+                                            $resetResultMessage="User Successfully Reset.";
+                                        }
+                                        else{
+                                            $resetResultMessage="Error submitting Reset Log.";
+                                        }
+                                    }
+                                    else{
+                                        $resetResultMessage="Error preparing log statment.";
+                                    } 
                                 }
                                 else{
                                     $resetResultMessage="Error with game deletion - statement.";
@@ -270,16 +289,12 @@
                     <input type="submit" id="logSubmit" name="logSubmit" value="View Logs"><br>
                 </form>
 
-                <table>
+                <table id="adminLogTable">
                     <tbody>
-                        <tr>
-                            <th>Admin ID</th>
-                            <th>Admin Action</th>
-                            <th>Action Description</th>
-                            <th>Timestamp</th>
-                        </tr>
                         <?php
+                            $tableHeaderString = "<tr><th>Admin ID</th><th>Admin Action</th><th>Action Description</th><th>Timestamp</th></tr>";
                             if(isset($logTableHTML)){
+                                echo $tableHeaderString;
                                 echo $logTableHTML;
                             }
                         ?>
