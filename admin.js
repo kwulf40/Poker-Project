@@ -4,6 +4,7 @@ function initializeValues() {
     document.getElementById("deleteSubmit").addEventListener("click", deleteAccount);
     document.getElementById("resetSubmit").addEventListener("click", resetAccount);
     document.getElementById("adminSubmit").addEventListener("click", giveAdmin);
+    document.getElementById("logSubmit").addEventListener("click", retrieveLog);
 }
 
 function deleteAccount() {
@@ -43,4 +44,9 @@ function giveAdmin() {
     else{
         adminForm.reset();
     }
+}
+
+function retrieveLog() {
+    var logForm  = document.getElementById("logs");
+    logForm.submit();
 }

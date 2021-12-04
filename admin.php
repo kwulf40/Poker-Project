@@ -47,10 +47,8 @@
                         mysqli_stmt_close($resetStatement);
 
                         $sqlHistoryDeleteStatement = "DELETE FROM GAMES WHERE user_id=?";
-                        $link2 = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
                         
-                        if($gameDeleteStatement = mysqli_prepare($link2, $sqlHistoryDeleteStatement)){
+                        if($gameDeleteStatement = mysqli_prepare($link, $sqlHistoryDeleteStatement)){
                             if ($id == -1){
                                 $resetResultMessage="Error with game deletion - id.";
                             }
@@ -80,10 +78,68 @@
             }
         }
         elseif (isset($_POST['giveAdminText'])){
-            echo "3";
+            /**
+             * Add check for self account admin access
+             */
+            $giveAdminUsername = trim($_POST["giveAdminText"]);
+            $userCheck = verifyUsername($link, $giveAdminUsername);
+            if ($userCheck == true){
+                $sqlAdminUpdateStatement = "UPDATE USERS SET ADMIN=1 WHERE username=?";
+                
+                if($adminStatement = mysqli_prepare($link, $sqlAdminUpdateStatement)){
+                    mysqli_stmt_bind_param($adminStatement, "s", $giveAdminUsername);
+
+                    if(mysqli_stmt_execute($adminStatement)){
+                        $adminResultMessage="User Status Successfully Elevated.";
+
+                        $sqlAdminLogStatement="INSERT INTO ADMIN (USER_ID, ACTION_NAME, ACTION_DESC, TIME) VALUES (?,?,?,NOW())";
+                        if($adminLogStatement = mysqli_prepare($link, $sqlAdminLogStatement)){
+                            mysqli_stmt_bind_param($adminLogStatement, "sss", $adminID, $action, $actionDesc);
+
+                            $adminID=$_SESSION["id"];
+                            $action="Give Admin";
+                            $actionDesc=$_SESSION["username"]." grants admin rights to ".$giveAdminUsername;
+
+                            if(mysqli_stmt_execute($adminLogStatement)){
+                                $adminResultMessage="User Status Successfully Elevated.";
+                            }
+                            else{
+                                $adminResultMessage="Error submitting Admin Log.";
+                            }
+                            mysqli_stmt_close($adminLogStatement);
+                        }
+                        else{
+                            $adminResultMessage="Error preparing Admin Log statement.";
+                        }
+                    }
+                    else{
+                        $adminResultMessage="Error Executing Admin Statement.";
+                    }
+                    mysqli_stmt_close($adminStatement);
+                }
+            }
+            else{
+                $adminResultMessage="User does not exist.";
+            }
         }
         elseif (isset($_POST['logSubmit'])){
-            echo "4";
+            $logTableHTML = "";
+            $sqlAdminLogSelectStatement = "SELECT * FROM ADMIN";
+
+            if($tableData = mysqli_query($link, $sqlAdminLogSelectStatement, MYSQLI_USE_RESULT)){
+                while ($row = mysqli_fetch_row($tableData)){
+                    $logTableHTML = "<tr>";
+                    for($i=0;$i<=4;$i++){
+                        $logTableHTML .= "<td>".$row[$i]."</td>";
+                    }
+                    $logTableHTML .= "</tr>";
+                }
+                mysqli_free_result($tableData);
+            }
+            else {
+                $logError = "Error Submitting Statment, or no table data.";
+            }
+            mysqli_close($link);
         }
         else{
             echo "Error";
@@ -211,9 +267,25 @@
 
                 <form id="logs" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">   
                     <label>View the admin logs here:</label>
-                    <input type="button" id="logSubmit" name="logSubmit" value="View Logs"><br>
+                    <input type="submit" id="logSubmit" name="logSubmit" value="View Logs"><br>
                 </form>
 
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Admin ID</th>
+                            <th>Admin Action</th>
+                            <th>Action Description</th>
+                            <th>Timestamp</th>
+                        </tr>
+                        <?php
+                            if(isset($logTableHTML)){
+                                echo $logTableHTML;
+                            }
+                        ?>
+                    </tbody>
+                </table>
+                <p class="submitFeedback"><?php echo $logError;?></p>
             </div>
         </div>
     </body>
