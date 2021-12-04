@@ -21,6 +21,25 @@
                     //Submit SQL Statment
                     if(mysqli_stmt_execute($deleteStatement)){
                         $deleteResultMessage="Delete Successful!";
+
+                        $sqlDeleteLogStatement="INSERT INTO ADMIN (USER_ID, ACTION_NAME, ACTION_DESC, TIME) VALUES (?,?,?,NOW())";
+                        if($deleteLogStatement = mysqli_prepare($link, $sqlDeleteLogStatement)){
+                            mysqli_stmt_bind_param($deleteLogStatement, "sss", $adminID, $action, $actionDesc);
+
+                            $adminID=$_SESSION["id"];
+                            $action="Delete Account";
+                            $actionDesc=$_SESSION["username"]." deletes ".$deleteUsername;
+
+                            if(mysqli_stmt_execute($deleteLogStatement)){
+                                $deleteResultMessage="User Successfully Deleted.";
+                            }
+                            else{
+                                $deleteResultMessage="Error submitting Delete Log.";
+                            }
+                        }
+                        else{
+                            $deleteResultMessage="Error preparing log statment.";
+                        } 
                     }
                     else{
                         $deleteResultMessage="Error Deleting";
@@ -147,7 +166,7 @@
 
             if($tableData = mysqli_query($link, $sqlAdminLogSelectStatement, MYSQLI_USE_RESULT)){
                 while ($row = mysqli_fetch_row($tableData)){
-                    $logTableHTML = "<tr>";
+                    $logTableHTML .= "<tr>";
                     for($i=0;$i<=3;$i++){
                         $logTableHTML .= "<td>".$row[$i]."</td>";
                     }
