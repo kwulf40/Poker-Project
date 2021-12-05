@@ -61,6 +61,7 @@
                     </div>
                 </div>
                 <div class="cards">
+                    <form id="gameSubmit" name="gameSubmit" action="" method="post"> 
                     <div>
                         <label>Please enter your cards on hand:</label>
                         <select name="handCardValues1" id="handCardValues1">
@@ -114,6 +115,7 @@
                     <div>
                         <button type="button" id="endGameBtn" onclick="">End Game</button>
                     </div>
+                </form>
                 </div>
             </div>
             <div class="prev-games">
