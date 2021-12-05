@@ -21,7 +21,7 @@
                         </a>
                     </li>
                     <li class="homepage-pokertool">
-                        <a href="pokertool.html">
+                        <a href="pokertool.php">
                             Poker Tool
                         </a>
                     </li>

@@ -139,7 +139,7 @@
                         </a>
                     </li>
                     <li class="tool">
-                        <a href="pokertool.html" hidden>
+                        <a href="pokertool.php" hidden>
                             Poker Tool
                         </a>
                     </li>

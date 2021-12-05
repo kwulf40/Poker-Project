@@ -1,3 +1,8 @@
+<?php
+    require_once "config.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,17 +17,18 @@
         <nav class="pokertool-navbar">
             <ul class="poker-tool-nav">
                 <li class="homepage">
-                    <a class="navbar-option" href="homepage.html">
+                    <a class="navbar-option" href="homepage.php">
                         Home
                     </a>
                 </li>
                 <li class="account-settings">
-                    <a href="accountsettings.html">
+                    <a href="accountsettings.php">
                         Account Settings
                     </a>
                 </li>
+                <!-- only if admin -->
                 <li class="admin-settings">
-                    <a href="admin.html">
+                    <a href="admin.php">
                         Admin Settings
                     </a>
                 </li>
@@ -57,8 +63,48 @@
                 <div class="cards">
                     <div>
                         <label>Please enter your cards on hand:</label>
-                        <input type="text" id="HandCards" name="CardsOnHand">
+                        <select name="handCardValues1" id="handCardValues1">
+                            <option value="Ace">Ace</option>
+                            <option value="Two">Two</option>
+                            <option value="Three">Three</option>
+                            <option value="Four">Four</option>
+                            <option value="Five">Five</option>
+                            <option value="Six">Six</option>
+                            <option value="Seven">Seven</option>
+                            <option value="Eight">Eight</option>
+                            <option value="Nine">Nine</option>
+                            <option value="Jack">Jack</option>
+                            <option value="Queen">Queen</option>
+                            <option value="King">King</option>
+                        </select>
+                        <select name="handCardSuits1" id="handCardSuits1">
+                            <option value="Diamond">Diamond</option>
+                            <option value="Heart">Heart</option>
+                            <option value="Spade">Spade</option>
+                            <option value="Club">Club</option>
+                        </select>
+                        <select name="handCardValues2" id="handCardValues2">
+                            <option value="Ace">Ace</option>
+                            <option value="Two">Two</option>
+                            <option value="Three">Three</option>
+                            <option value="Four">Four</option>
+                            <option value="Five">Five</option>
+                            <option value="Six">Six</option>
+                            <option value="Seven">Seven</option>
+                            <option value="Eight">Eight</option>
+                            <option value="Nine">Nine</option>
+                            <option value="Jack">Jack</option>
+                            <option value="Queen">Queen</option>
+                            <option value="King">King</option>
+                        </select>
+                        <select name="handCardSuits2" id="handCardSuits2">
+                            <option value="Diamond">Diamond</option>
+                            <option value="Heart">Heart</option>
+                            <option value="Spade">Spade</option>
+                            <option value="Club">Club</option>
+                        </select>
                         <button type="submit" id="submitHandCards" onclick="">Enter Cards</button>
+                        <!--update cards on table-->
                     </div>
                     <div>
                         <label>Please enter the first/next card on the table:</label>
