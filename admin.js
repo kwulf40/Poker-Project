@@ -13,10 +13,10 @@ function deleteAccount() {
 
     var confirmBox = confirm("Are you sure you want to delete " + deleteAccountName + "?");
     if(confirmBox == true){
-        deleteForm .submit();
+        deleteForm.submit();
     }
     else{
-        deleteForm .reset();
+        deleteForm.reset();
     }
 }
 

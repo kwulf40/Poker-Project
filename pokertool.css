@@ -6,6 +6,8 @@ body, html {
     margin: 0;
 }
 
+[hidden] { display: none !important;}
+
 .poker-tool-nav{
     top: 0;
 }
