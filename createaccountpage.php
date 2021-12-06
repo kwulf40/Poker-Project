@@ -130,7 +130,8 @@
                         $_SESSION["loggedIn"] = true;
                         $_SESSION["id"] = $id;
                         $_SESSION["username"] = $username;
-                        $_SESSION["admin"] = $adminBool;  
+                        $_SESSION["admin"] = $adminBool;
+                        $_SESSION["gameNumber"] = 0;  
                         // Redirect to homepage
                         header("location: homepage.php");
                         mysqli_stmt_close($accountSelectStatement);

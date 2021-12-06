@@ -3,9 +3,6 @@ window.onload = document.addEventListener("DOMContentLoaded", function(){
 });
 
 function initializeValues() {
-    //document.getElementById("submitHandCards").addEventListener("click", submitHand);
-    //document.getElementById("submitTableCard").addEventListener("click", submitTable);
-    //document.getElementById("endGameBtn").addEventListener("click", endGame);
     document.getElementById("handCardValues1").addEventListener("change", function(){
         updateCard("hand1")
     });
@@ -57,7 +54,35 @@ function initializeValues() {
     document.getElementById("cardReset").addEventListener("click", function(){
         cardReset()
     });
-    
+    document.getElementById("endGameBtn").addEventListener("click", function(){
+        submitValidateInfo()
+    });
+    document.getElementsByClassName("close")[0].addEventListener("click", function(){
+        var modal = document.getElementById("outcomeModal");
+        modal.style.display = "none";
+    });
+    window.onclick = function(event) {
+        var modal = document.getElementById("outcomeModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+    }
+    document.getElementById("winButton").addEventListener("click", function(){
+        var gameForm = document.getElementById("gameSubmit");
+        var modal = document.getElementById("outcomeModal");
+        var outcomeStorage = document.getElementById("outcomeValue");
+        outcomeStorage.value = "W";
+        modal.style.display = "none";
+        gameForm.submit();
+    });
+    document.getElementById("lossButton").addEventListener("click", function(){
+        var gameForm = document.getElementById("gameSubmit");
+        var modal = document.getElementById("outcomeModal");
+        var outcomeStorage = document.getElementById("outcomeValue");
+        outcomeStorage.value = "L";
+        modal.style.display = "none";
+        gameForm.submit();
+    });
 }
 
 function updateCard(cardName){
@@ -216,6 +241,7 @@ function revealRiver() {
 }
 
 function cardReset() {
+    var submitErrorField = document.getElementById("submitError");
     var turnDiv = document.getElementById('turnDiv');
     var riverDiv = document.getElementById('riverDiv');
     var turnButton = document.getElementById('continueToTurn');
@@ -243,4 +269,45 @@ function cardReset() {
     riverButton.hidden = true;
 
     turnButton.hidden = false;
+    submitErrorField.innerHTML="";
+}
+
+function submitValidateInfo() {
+    var submitErrorMsg = "";
+    var submitErrorField = document.getElementById("submitError");
+    var outcomeModal = document.getElementById("outcomeModal");
+    var handValue1 = document.getElementById("handCardValues1").value;
+    var handSuit1 = document.getElementById("handCardSuits1").value;
+    var handValue2 = document.getElementById("handCardValues2").value;
+    var handSuit2 = document.getElementById("handCardSuits2").value;
+    var flopValue1 = document.getElementById("flopCardValues1").value;
+    var flopSuit1 = document.getElementById("flopCardSuits1").value;
+    var flopValue2 = document.getElementById("flopCardValues2").value;
+    var flopSuit2 = document.getElementById("flopCardSuits2").value;
+    var flopValue3 = document.getElementById("flopCardValues3").value;
+    var flopSuit3 = document.getElementById("flopCardSuits3").value;
+    var turnValue = document.getElementById("turnCardValues").value;
+    var turnSuit = document.getElementById("turnCardSuits").value;
+    var riverValue = document.getElementById("riverCardValues").value;
+    var riverSuit = document.getElementById("riverCardSuits").value;
+    var turnDiv = document.getElementById("turnDiv");
+    var riverDiv = document.getElementById("riverDiv");
+
+    let flopArray = [handValue1, handSuit1, handValue2, handSuit2, flopValue1, flopSuit1, flopValue2, flopSuit2, flopValue3, flopSuit3]
+
+    if(flopArray.every(function(x) {return x === "none";})){
+        submitErrorMsg = "Please ensure the hand cards and flop cards are filled in before submitting!"
+        submitErrorField.innerHTML = submitErrorMsg;
+    }
+    else if((turnDiv.hidden == false) && (turnValue == "none" || turnSuit == "none")){
+        submitErrorMsg = "Please fill out the turn card fields!"
+        submitErrorField.innerHTML = submitErrorMsg;
+    }
+    else if((riverDiv.hidden == false) && (riverValue == "none" || riverSuit == "none")){
+        submitErrorMsg = "Please fill out the river card fields!"
+        submitErrorField.innerHTML = submitErrorMsg;
+    }
+    else{
+        outcomeModal.style.display = "block";
+    }
 }
