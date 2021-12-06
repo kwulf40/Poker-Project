@@ -90,6 +90,7 @@
         if($resetStatement = mysqli_prepare($link, $sqlResetStatement)){
             mysqli_stmt_bind_param($resetStatement, "s", $resetUsername);
             if(mysqli_stmt_execute($resetStatement)){
+                $_SESSION["gameNumber"] = 0;
                 mysqli_stmt_close($resetStatement);
 
                 $sqlHistoryDeleteStatement = "DELETE FROM GAMES WHERE user_id=?";

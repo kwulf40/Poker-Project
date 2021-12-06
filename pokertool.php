@@ -1,6 +1,78 @@
 <?php
     require_once "config.php";
+<<<<<<< HEAD:pokertool.html
     
+=======
+
+    session_start();
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if (isset($_POST['handCardValues1'])){
+            $handCards = $_POST['handCardValues1'] . "-" . $_POST['handCardSuits1'] . "," . $_POST['handCardValues2'] . "-" . $_POST['handCardSuits2'];
+
+            $boardCards = $_POST['flopCardValues1'] . "-" . $_POST['flopCardSuits1'] . "," . $_POST['flopCardValues2'] . "-" . $_POST['flopCardSuits2'] . "," . $_POST['flopCardValues3'] . "-" . $_POST['flopCardSuits3'];
+            if((isset($_POST['turnCardValues']) && isset($_POST['turnCardSuits'])) && ($_POST['turnCardValues'] != "none" && $_POST['turnCardSuits'] != "none")){
+                $boardCards .= "," . $_POST['turnCardValues'] . "-" . $_POST['turnCardSuits'];
+            }
+            if((isset($_POST['riverCardValues']) && isset($_POST['riverCardSuits'])) && ($_POST['riverCardValues'] != "none" && $_POST['riverCardSuits'] != "none")){
+                $boardCards .= "," . $_POST['riverCardValues'] . "-" . $_POST['riverCardSuits'];
+            }
+
+            $sqlGameInsertStatment = "INSERT INTO GAMES (user_id, game_number, board_cards, hand_cards, outcome) VALUES (?, ?, ?, ?, ?)";
+
+            if($gameInsertStatement = mysqli_prepare($link, $sqlGameInsertStatment)){
+                // Bind variables
+                mysqli_stmt_bind_param($gameInsertStatement, "iisss", $id, $gameNumber, $boardCards, $handCards, $outcome);
+
+                $id = $_SESSION["id"];
+                $gameNumber = ($_SESSION["gameNumber"] + 1);
+
+                if($_POST["outcomeValue"] == "W"){
+                    $outcome = 1;
+                }
+                else{
+                    $outcome = 0;
+                }
+                
+                if(mysqli_stmt_execute($gameInsertStatement)){
+                    //insert success
+                    if($outcome == 1){
+                        $sqlUpdateUserStatement = "UPDATE USERS SET total_games=total_games+1, win_count=win_count+1 WHERE username=?";
+                    }
+                    else{
+                        $sqlUpdateUserStatement = "UPDATE USERS SET total_games=total_games+1, loss_count=loss_count+1 WHERE username=?";
+                    }
+
+                    if($updateUserStatement = mysqli_prepare($link, $sqlUpdateUserStatement)){
+                        mysqli_stmt_bind_param($updateUserStatement, "s", $username);
+
+                        $username = $_SESSION["username"];
+
+                        if(mysqli_stmt_execute($updateUserStatement)){
+                            $_SESSION["gameNumber"] += 1;
+                            //success
+                        }
+                        else{
+                            //error executing update statment
+                        }
+                    }
+                    else{
+                        echo "error executing update statment";
+                    }
+                }
+                else{
+                    echo "executing insert statment" . mysqli_error($link);
+                }
+            }
+            else{
+                //error preparing insert statment
+            }
+        }
+        else{
+            //other
+        }
+    }
+>>>>>>> 42d73e8dffdf9ec71ee03e3ea58a7332b1a2df93:pokertool.php
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +107,14 @@
             </ul>
         </nav>
         <main class="middle-content">
+        <div id="outcomeModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Did you hold the winning hand?</p>
+                <input type="button" id="winButton" value="Yes!!">
+                <input type="button" id="lossButton" value="No">
+            </div>
+        </div>
             <div class="current-game">
                 <div class="game-table">
                     <img class="table" src="site-images/game-table.png" alt="gameTable">
@@ -61,7 +141,7 @@
                     </div>
                 </div>
                 <div class="cards">
-                    <form id="gameSubmit" name="gameSubmit" action="" method="post"> 
+                    <form id="gameSubmit" name="gameSubmit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
                     <div>
                         <label>Please enter your cards on hand:&nbsp;</label>
                         <select name="handCardValues1" id="handCardValues1">
@@ -244,7 +324,9 @@
                         <input type="button" id="endGameBtn" value="Submit Game Info">
                         <input type="button" id="cardReset" value="Reset">
                     </div>
-                    </form>
+                    <input type="hidden" id="outcomeValue" name="outcomeValue" value="">
+                    <p id="submitError"></p>
+                </form>
                 </div>
             </div>
             <div class="prev-games">

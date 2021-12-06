@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(empty($usernameError) && empty($passwordError)){
             //Prepare a select statement
-            $sql = "SELECT id, username, password, admin FROM USERS WHERE username = ?";
+            $sql = "SELECT id, username, password, admin, total_games FROM USERS WHERE username = ?";
             
             if($submitStatement = mysqli_prepare($link, $sql)){
                 //Bind variables to the statement
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     //Check if username exists, if yes then verify password
                     if(mysqli_stmt_num_rows($submitStatement) == 1){                    
                         //Bind result variables
-                        mysqli_stmt_bind_result($submitStatement, $id, $username, $passwordHash, $adminBool);
+                        mysqli_stmt_bind_result($submitStatement, $id, $username, $passwordHash, $adminBool, $gameNumber);
                         
                         if(mysqli_stmt_fetch($submitStatement)){
                             if(password_verify($password, $passwordHash)){
@@ -63,7 +63,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 $_SESSION["loggedIn"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["username"] = $username;
-                                $_SESSION["admin"] = $adminBool;                             
+                                $_SESSION["admin"] = $adminBool;
+                                $_SESSION["gameNumber"] = $gameNumber;                             
                                 
                                 // Redirect user to welcome page
                                 header("location: homepage.php");
