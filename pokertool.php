@@ -1,9 +1,6 @@
 <?php
     require_once "config.php";
-<<<<<<< HEAD:pokertool.html
     
-=======
-
     session_start();
 
     $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
@@ -98,7 +95,6 @@
             //other
         }
     }
->>>>>>> 42d73e8dffdf9ec71ee03e3ea58a7332b1a2df93:pokertool.php
 ?>
 
 <!DOCTYPE html>
