@@ -1,6 +1,6 @@
 <?php
     require_once "config.php";
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
                 <div class="cards">
                     <form id="gameSubmit" name="gameSubmit" action="" method="post"> 
                     <div>
-                        <label>Please enter your cards on hand:</label>
+                        <label>Please enter your cards on hand:&nbsp;</label>
                         <select name="handCardValues1" id="handCardValues1">
                             <option value="none" selected disabled hidden>Select Hand Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -87,6 +87,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="handCardValues2" id="handCardValues2">
                             <option value="none" selected disabled hidden>Select Hand Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -112,7 +113,7 @@
                         </select>
                     </div>
                     <div>
-                        <label>Please enter the three cards in the flop:</label>
+                        <label>Please enter the three cards in the flop:&nbsp;</label>
                         <select name="flopCardValues1" id="flopCardValues1">
                             <option value="none" selected disabled hidden>Select Flop Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -136,6 +137,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="flopCardValues2" id="flopCardValues2">
                             <option value="none" selected disabled hidden>Select Flop Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -159,6 +161,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="flopCardValues3" id="flopCardValues3">
                             <option value="none" selected disabled hidden>Select Flop Card 3 Value</option>
                             <option value="ace">Ace</option>
@@ -241,7 +244,7 @@
                         <input type="button" id="endGameBtn" value="Submit Game Info">
                         <input type="button" id="cardReset" value="Reset">
                     </div>
-                </form>
+                    </form>
                 </div>
             </div>
             <div class="prev-games">

@@ -1,5 +1,6 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
 }
 body, html {
     height: 100%;
@@ -87,13 +88,13 @@ li *:hover {
     justify-content: space-between;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
     .middle-content .current-game, .middle-content .prev-games {
         width: 100%;
     }
 }
 
-.current-game div {
+.current-game div{
     display: flex;
     justify-content: center;
 }
@@ -104,7 +105,7 @@ li *:hover {
 
 .table {
     padding: 30px;
-    width: 75%;
+    width: 80%;
 }
 
 .table-card {
@@ -114,19 +115,19 @@ li *:hover {
 }
 
 #flopOne {
-    left: 20vw;
+    left: 18.5vw;
 }
 
 #flopTwo {
-    left: 27.5vw;
+    left: 27vw;
 }
 
 #turn {
-    left: 42.5vw;
+    left: 43vw;
 }
 
 #river {
-    left: 50vw;
+    left: 51vw;
 } 
 
 .hand-card {
@@ -143,10 +144,11 @@ li *:hover {
     left: 38vw;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
     .table-card {
+        position: absolute;
         height: 8vw;
-        top: 15vw;
+        top: 12vw;
     }
     #flopOne {
         left: 25vw;
@@ -155,20 +157,87 @@ li *:hover {
         left: 35.5vw;
     }
     #turn {
-        left: 55.5vw;
+        left: 56vw;
     }
     #river {
-        left: 66vw;
+        left: 66.5vw;
     }
     .hand-card {
         height: 8vw;
         top: 25vw;
     }
     #cardOne {
-        left: 41.5vw;
+        left: 42vw;
     }
     #cardTwo {
-        left: 50vw;
+        left: 51vw;
+    }
+}
+
+@-moz-document url-prefix() {
+    .table-card {
+        position: absolute;
+        height: 6vw;
+        top: 8vw;
+    }
+
+    #flopOne{
+        left: 14vw;
+    }
+    
+    #flopTwo {
+        left: 22.5vw;
+    }
+    
+    #turn {
+        left: 40vw;
+    }
+    
+    #river {
+        left: 48.5vw;
+    } 
+    
+    .hand-card {
+        position: absolute;
+        height: 6vw;
+        top: 17vw;
+    }
+    
+    #cardOne {
+        left: 28vw;
+    }
+    
+    #cardTwo {
+        left: 34.5vw;
+    }
+    
+    @media only screen and (max-width: 1100px) {
+        .table-card {
+            height: 8vw;
+            top: 15vw;
+        }
+        #flopOne {
+            left: 0px;
+        }
+        #flopTwo {
+            left: 12vw;
+        }
+        #turn {
+            left: 35.5vw;
+        }
+        #river {
+            left: 47.5vw;
+        }
+        .hand-card {
+            height: 8vw;
+            top: 25vw;
+        }
+        #cardOne {
+            left: 19vw;
+        }
+        #cardTwo {
+            left: 28vw;
+        }
     }
 }
 
@@ -178,7 +247,6 @@ li *:hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 100%;
     padding: 10px;
 }
 
