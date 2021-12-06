@@ -1,5 +1,8 @@
 <?php
     require_once "config.php";
+<<<<<<< HEAD:pokertool.html
+    
+=======
 
     session_start();
 
@@ -95,6 +98,7 @@
             //other
         }
     }
+>>>>>>> 42d73e8dffdf9ec71ee03e3ea58a7332b1a2df93:pokertool.php
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +169,7 @@
                 <div class="cards">
                     <form id="gameSubmit" name="gameSubmit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
                     <div>
-                        <label>Please enter your cards on hand:</label>
+                        <label>Please enter your cards on hand:&nbsp;</label>
                         <select name="handCardValues1" id="handCardValues1">
                             <option value="none" selected disabled hidden>Select Hand Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -189,6 +193,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="handCardValues2" id="handCardValues2">
                             <option value="none" selected disabled hidden>Select Hand Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -214,7 +219,7 @@
                         </select>
                     </div>
                     <div>
-                        <label>Please enter the three cards in the flop:</label>
+                        <label>Please enter the three cards in the flop:&nbsp;</label>
                         <select name="flopCardValues1" id="flopCardValues1">
                             <option value="none" selected disabled hidden>Select Flop Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -238,6 +243,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="flopCardValues2" id="flopCardValues2">
                             <option value="none" selected disabled hidden>Select Flop Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -261,6 +267,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
+                        <label>&nbsp;</label>
                         <select name="flopCardValues3" id="flopCardValues3">
                             <option value="none" selected disabled hidden>Select Flop Card 3 Value</option>
                             <option value="ace">Ace</option>
