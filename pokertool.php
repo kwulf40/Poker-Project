@@ -3,7 +3,7 @@
     
     session_start();
 
-    updateGameInfo($link);
+    //updateGameInfo($link);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST['handCardValues1'])){
@@ -70,9 +70,9 @@
         else{
             //other
         }
-        updateGameInfo($link);
+        //updateGameInfo($link);
     }
-
+    /*
     function updateGameInfo($link){
         $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
 
@@ -100,6 +100,7 @@
             echo "Error preparing game history statement";
         }
     }
+    */
 ?>
 
 <!DOCTYPE html>
