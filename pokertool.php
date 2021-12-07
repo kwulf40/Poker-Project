@@ -3,32 +3,7 @@
     
     session_start();
 
-    $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
-
-    if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
-        $gameHistoryGamesArray = Array();
-        mysqli_stmt_bind_param($userGameInformationStatement, "i", $_SESSION["id"]);
-        if(mysqli_stmt_execute($userGameInformationStatement)){
-            $gameHistory = mysqli_stmt_get_result($userGameInformationStatement);
-            $gameHistoryRows = mysqli_num_rows($gameHistory);
-            while ($game = mysqli_fetch_row($gameHistory)) {
-	            $gameInfoArray = Array();
-                //Place game info in game Info array
-		        foreach ($game as $gameData) {
-                    array_push($gameInfoArray, $gameData);
-                }
-                //Place the entire game into the History array
-	            array_push($gameHistoryGamesArray, $gameInfoArray);
-            }
-        }
-        else{
-            echo "Error executing game history statement";
-        }
-    }
-    else{
-        echo "Error preparing game history statement";
-    }
-    updateGameInfo();
+    updateGameInfo($link);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST['handCardValues1'])){
@@ -95,10 +70,10 @@
         else{
             //other
         }
-        updateGameInfo();
+        updateGameInfo($link);
     }
 
-    function updateGameInfo(){
+    function updateGameInfo($link){
         $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
 
         if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
