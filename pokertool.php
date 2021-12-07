@@ -365,10 +365,7 @@
                     <input type="number" id="historySearch" name="historySearch">
                     <button type="button" id="searchButton" name="historySearch">Search</button>
                 </div>
-                <div>
-                    Game: 1 <br>
-                    Hand: AD 9H <br>
-                    Table: 5C 7D KD 3S 7H <br>
+
             </div>
         </main>
         <footer class="stats-table">
