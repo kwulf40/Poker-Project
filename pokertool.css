@@ -94,9 +94,17 @@ li *:hover {
     }
 }
 
-.current-game div{
+.current-game div {
     display: flex;
+}
+
+.current-game .cards div {
     justify-content: center;
+}
+
+.table{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .game-table {
@@ -122,6 +130,9 @@ li *:hover {
     left: 27vw;
 }
 
+#flopThree {
+    left: 35vw;
+}
 #turn {
     left: 43vw;
 }
@@ -156,11 +167,14 @@ li *:hover {
     #flopTwo {
         left: 35.5vw;
     }
+    #flopThree {
+        left: 46.5vw;
+    }
     #turn {
-        left: 56vw;
+        left: 57vw;
     }
     #river {
-        left: 66.5vw;
+        left: 68vw;
     }
     .hand-card {
         height: 8vw;
@@ -174,7 +188,7 @@ li *:hover {
     }
 }
 
-@-moz-document url-prefix() {
+/* @-moz-document url-prefix() {
     .table-card {
         position: absolute;
         height: 6vw;
@@ -182,19 +196,22 @@ li *:hover {
     }
 
     #flopOne{
-        left: 14vw;
+        left: 18.5vw;
     }
     
     #flopTwo {
         left: 22.5vw;
     }
     
+    #flopThree {
+        left: 31vw;
+    }
     #turn {
-        left: 40vw;
+        left: 39.5vw;
     }
     
     #river {
-        left: 48.5vw;
+        left: 48vw;
     } 
     
     .hand-card {
@@ -239,7 +256,7 @@ li *:hover {
             left: 28vw;
         }
     }
-}
+} */
 
 .current-game .cards {
     background-color: #e2e2e2;
@@ -249,14 +266,16 @@ li *:hover {
     justify-content: space-evenly;
     padding: 10px;
 }
-
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
     #endGameBtn {
-        width: 200px;
+        width: 220px;
     }
     .cards div{
         padding: 10px;
         display: grid;
+    }
+    .cards div select {
+        width: 220px;
     }
 }
 

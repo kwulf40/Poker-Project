@@ -1,8 +1,5 @@
 <?php
     require_once "config.php";
-<<<<<<< HEAD:pokertool.html
-    
-=======
 
     session_start();
 
@@ -72,7 +69,6 @@
             //other
         }
     }
->>>>>>> 42d73e8dffdf9ec71ee03e3ea58a7332b1a2df93:pokertool.php
 ?>
 
 <!DOCTYPE html>
@@ -143,7 +139,9 @@
                 <div class="cards">
                     <form id="gameSubmit" name="gameSubmit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
                     <div>
-                        <label>Please enter your cards on hand:&nbsp;</label>
+                        <label>Please enter your cards on hand:</label>
+                    </div>
+                    <div>
                         <select name="handCardValues1" id="handCardValues1">
                             <option value="none" selected disabled hidden>Select Hand Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -193,7 +191,9 @@
                         </select>
                     </div>
                     <div>
-                        <label>Please enter the three cards in the flop:&nbsp;</label>
+                        <label>Please enter the three cards in the flop:</label>
+                    </div>
+                    <div>
                         <select name="flopCardValues1" id="flopCardValues1">
                             <option value="none" selected disabled hidden>Select Flop Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -268,6 +268,8 @@
                     </div>
                     <div id="turnDiv" hidden>
                         <label>Please enter the turn card:</label>
+                    </div>
+                    <div id="turnCardDiv" hidden>
                         <select name="turnCardValues" id="turnCardValues">
                             <option value="none" selected disabled hidden>Select Turn Card Value</option>
                             <option value="ace">Ace</option>
@@ -294,6 +296,8 @@
                     </div>
                     <div id="riverDiv" hidden>
                         <label>Please enter the river card:</label>
+                    </div>
+                    <div id="riverCardDiv" hidden>
                         <select name="riverCardValues" id="riverCardValues">
                             <option value="none" selected disabled hidden>Select River Card Value</option>
                             <option value="ace">Ace</option>
