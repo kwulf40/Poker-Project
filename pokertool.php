@@ -1,10 +1,6 @@
 <?php
     require_once "config.php";
-<<<<<<< HEAD:pokertool.html
-
-=======
     
->>>>>>> f6dce1858f5eac667eba7823754ac450e6215bd5:pokertool.php
     session_start();
 
     $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";

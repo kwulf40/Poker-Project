@@ -279,33 +279,32 @@
                 </ul>
             </nav>
             <!-- End header HTML-->
-            <h1>Administrative Control</h1>
             <div class="account-control">
-
+                <h1>Administrative Control</h1>
                 <form id="deletion" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Enter the account you want to delete:</label>
                     <input type="text" id="deleteText" name="deleteText"><br>
-                    <input type="button" id="deleteSubmit" value="Submit"><br>
+                    <button type="button" id="deleteSubmit" value="Submit">Delete Account</button><br>
                     <p class="submitFeedback"><?php echo $deleteResultMessage;?></p>
                 </form>
 
                 <form id="reset" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Enter the account you want to reset:</label>
                     <input type="text" id="resetText" name="resetText"><br>
-                    <input type="button" id="resetSubmit" value="Submit"><br>
+                    <button type="button" id="resetSubmit" value="Submit">Reset Account</button><br>
                     <p class="submitFeedback"><?php echo $resetResultMessage;?></p>
                 </form>
 
                 <form id="admin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Enter the account you want to grant admin rights to:</label>
                     <input type="text" id="giveAdminText" name="giveAdminText"><br>
-                    <input type="button" id="adminSubmit" value="Submit"><br>
+                    <button type="button" id="adminSubmit" value="Submit">Grant Admin Rights</button><br>
                     <p class="submitFeedback"><?php echo $adminResultMessage;?></p>
                 </form>
 
                 <form id="logs" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">   
                     <label>View the admin logs here:</label>
-                    <input type="submit" id="logSubmit" name="logSubmit" value="View Logs"><br>
+                    <button type="submit" id="logSubmit" name="logSubmit" value="View Logs">View Logs</button><br>
                 </form>
 
                 <table id="adminLogTable">

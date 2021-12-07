@@ -173,6 +173,7 @@
                 <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
             <div class="createAccount">
+                <h1 id="createAccountHeader">Create an Account</h1>
                 <!--New Account Submission Form-->
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <!--New Username Section-->
@@ -191,13 +192,13 @@
                     <span class="submitFeedback"><?php echo $confirmPasswordError; ?></span>
 
                     <!--Admin Password Section-->
-                    <label>Enter admin code to create admin account:</label>
-                    <input type="text" id="adminPassword" name="adminPassword"><br>
+                    <label>Create as Admin Account:</label>
+                    <input type="text" id="adminPassword" placeholder="Enter admin code (if provided to you)" name="adminPassword"><br>
                     <span class="submitFeedback"><?php echo $adminPasswordError; ?></span>
 
-                    <input type="submit" class="button" id="submitBtn" value="Submit"><br>
+                    <button type="submit" id="submitBtn" value="Submit">Submit</button><br>
                 </form>
-                <label>Already have an account?</label><br>
+                <label id="haveLogin">Already have an account?</label><br>
                 <button id="loginPage" onclick="window.location.href='loginpage.php';">Go to Login</button>
             </div>
         </div>

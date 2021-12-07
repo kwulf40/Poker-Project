@@ -89,7 +89,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -113,13 +112,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div>
                 <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
-            <div class="login" >
+            <div class="login">
                 <?php 
                 if(!empty($loginError)){
                     echo '<div class="emptyLoginError">' . $loginError . '</div>';
                 }        
                 ?>
-
+                <h1 id="loginHeader">Login</h1>
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <!--New Username Section-->
                     <label>Username:</label>
@@ -133,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                     <button type="submit" id="submit" onclick="">Submit</button><br>
                 </form>
-                <label>Don't have an account yet?</label><br>
+                <label id="dontHaveAccount">Don't have an account yet?</label><br>
                 <button id="createaccount" onclick="window.location.href='createaccountpage.php';">Create Account</button>
             </div>
         </div>
