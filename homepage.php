@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE HTML>
 <html lang = "en">
     <head>
@@ -5,7 +9,6 @@
         <meta charset = "utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href = "homepage.css"/>
-        <script src="homepage.js"></script>
     </head>
     <body>
         <div class="bg">
@@ -13,30 +16,43 @@
             <nav class="homepage-nav">
                 <ul class="hp-nav-content">
                     <li class="homepage-pokertool">
-                        <a href="homepage.html">
+                        <a href="homepage.php">
                             Home
                         </a>
                     </li>
                     <li class="homepage-pokertool">
-                        <a href="pokertool.html">
+                        <a href="pokertool.php">
                             Poker Tool
                         </a>
                     </li>
-                    <li class="account">
-                        <a href="createaccountpage.html">
-                            Create Account
-                        </a>
-                    </li>
-                    <li class="account">
-                        <a href="loginpage.html">
-                            Login
-                        </a>
-                    </li>
+                    <?php
+                    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"accountsettings.php\">Welcome, ".htmlspecialchars($_SESSION["username"])."!</a>";
+                        echo "</li>";
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"logoutpage.php\">Logout</a>";
+                        echo "</li>";
+                        if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                            echo "<li class=\"account\">";
+                            echo "<a href=\"admin.php\">Admin</a>";
+                            echo "</li>";
+                        }
+                    }
+                    else {
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"createaccountpage.php\">Create Account</a>";
+                        echo "</li>";
+                        echo "<li class=\"account\">";
+                        echo "<a href=\"loginpage.php\">Login</a>";
+                        echo "</li>";
+                    }
+                    ?>
                 </ul>
             </nav>
             <!-- End header HTML-->
             <div>
-                <img class="logo" src="HandTracker-Logo.png" alt="Logo">
+                <img class="logo" src="site-images/HandTracker-Logo.png" alt="Logo">
             </div>
             <hgroup>
                 <h1>A FREE and SIMPLE Poker Statistics Tool</h1>

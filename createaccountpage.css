@@ -4,7 +4,7 @@ body, html{
 }
 
 .bg {
-    background-image: url("Poker-background-2.jpg");
+    background-image: url("site-images/Poker-background-2.jpg");
   
     height: 100%;
   
@@ -71,7 +71,7 @@ li a:hover {
     background-color:lightgrey;
     opacity: 80%;
     display: grid;
-    width: 15vw;
+    width: 16vw;
     padding: 30px;
     margin-top: 7vh;
     margin-left: auto;
@@ -92,6 +92,7 @@ label {
 
 button {
     cursor: pointer;
+    width: 15vw;
 }
 
 button:hover {

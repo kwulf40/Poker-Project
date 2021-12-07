@@ -1,10 +1,13 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x:hidden;
 }
 body, html {
     height: 100%;
     margin: 0;
 }
+
+[hidden] { display: none !important;}
 
 .poker-tool-nav{
     top: 0;
@@ -53,39 +56,19 @@ li *:hover {
     border-bottom: 3px solid white; 
 }
 
-.account-info {
-    background-color: #1e8350;
+.gameHistory{
+
+    justify-content: center;
 }
 
-.account-info * {
+#historySearch {
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: right;
-    padding: 5px 20px;
 }
 
-.account-info label {
-    color: white;
-    font-size: 15px;
-}
-
-.account-info button {
-    cursor: pointer;
-}
-
-.account-info button:hover {
-    background-color: rgba(20, 20, 20, 0.89);
-    color: white;
-}
-
-@media only screen and (max-width: 1000px) {
-    .account-info label{
-        font-size: 12px;
-    }
-
-    .account-info button {
-        font-size: 12px;
-    }
+#searchButton {
+    display: flex;
+    justify-content: center;
 }
 
 .middle-content {
@@ -96,7 +79,7 @@ li *:hover {
 .current-game {
     width: 75%;
     float: left;
-    background-image: url("Poker-background-2.jpg");
+    background-image: url("site-images/Poker-background-2.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -105,20 +88,157 @@ li *:hover {
     justify-content: space-between;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1100px) {
     .middle-content .current-game, .middle-content .prev-games {
         width: 100%;
     }
 }
 
-.current-game div {
+.current-game div{
     display: flex;
     justify-content: center;
 }
 
+.game-table {
+    position: relative;
+}
+
 .table {
     padding: 30px;
-    width: 75%;
+    width: 80%;
+}
+
+.table-card {
+    position: absolute;
+    height: 6vw;
+    top: 8vw;
+}
+
+#flopOne {
+    left: 18.5vw;
+}
+
+#flopTwo {
+    left: 27vw;
+}
+
+#turn {
+    left: 43vw;
+}
+
+#river {
+    left: 51vw;
+} 
+
+.hand-card {
+    position: absolute;
+    height: 6vw;
+    top: 17vw;
+}
+
+#cardOne {
+    left: 32vw;
+}
+
+#cardTwo {
+    left: 38vw;
+}
+
+@media only screen and (max-width: 1100px) {
+    .table-card {
+        position: absolute;
+        height: 8vw;
+        top: 12vw;
+    }
+    #flopOne {
+        left: 25vw;
+    }
+    #flopTwo {
+        left: 35.5vw;
+    }
+    #turn {
+        left: 56vw;
+    }
+    #river {
+        left: 66.5vw;
+    }
+    .hand-card {
+        height: 8vw;
+        top: 25vw;
+    }
+    #cardOne {
+        left: 42vw;
+    }
+    #cardTwo {
+        left: 51vw;
+    }
+}
+
+@-moz-document url-prefix() {
+    .table-card {
+        position: absolute;
+        height: 6vw;
+        top: 8vw;
+    }
+
+    #flopOne{
+        left: 14vw;
+    }
+    
+    #flopTwo {
+        left: 22.5vw;
+    }
+    
+    #turn {
+        left: 40vw;
+    }
+    
+    #river {
+        left: 48.5vw;
+    } 
+    
+    .hand-card {
+        position: absolute;
+        height: 6vw;
+        top: 17vw;
+    }
+    
+    #cardOne {
+        left: 28vw;
+    }
+    
+    #cardTwo {
+        left: 34.5vw;
+    }
+    
+    @media only screen and (max-width: 1100px) {
+        .table-card {
+            height: 8vw;
+            top: 15vw;
+        }
+        #flopOne {
+            left: 0px;
+        }
+        #flopTwo {
+            left: 12vw;
+        }
+        #turn {
+            left: 35.5vw;
+        }
+        #river {
+            left: 47.5vw;
+        }
+        .hand-card {
+            height: 8vw;
+            top: 25vw;
+        }
+        #cardOne {
+            left: 19vw;
+        }
+        #cardTwo {
+            left: 28vw;
+        }
+    }
 }
 
 .current-game .cards {
@@ -127,7 +247,6 @@ li *:hover {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    width: 100%;
     padding: 10px;
 }
 
@@ -161,9 +280,9 @@ li *:hover {
 }
 
 .prev-games div {
-    width: 100%;
     padding: 20px;
-    flex: 1 0 20%;
+    flex-wrap: wrap;
+    display: flex;
     background-image:linear-gradient(white, lightgrey)
 }
 
@@ -182,3 +301,42 @@ li *:hover {
     font-size: 20px;
     padding: 50px 50px;
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
