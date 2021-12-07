@@ -2,8 +2,11 @@
     require_once "config.php";
     
     session_start();
+    
+    $gameHistoryGamesArray = Array();
+    $gameHistoryRows = 0;
 
-    //updateGameInfo($link);
+    updateGameInfo($link, $gameHistoryGamesArray, $gameHistoryRows);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST['handCardValues1'])){
@@ -70,10 +73,10 @@
         else{
             //other
         }
-        //updateGameInfo($link);
+        updateGameInfo($link, $gameHistoryGamesArray, $gameHistoryRows);
     }
-    /*
-    function updateGameInfo($link){
+    
+    function updateGameInfo($link, &$gameHistoryGamesArray, &$gameHistoryRows){
         $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
 
         if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
@@ -100,7 +103,7 @@
             echo "Error preparing game history statement";
         }
     }
-    */
+   
 ?>
 
 <!DOCTYPE html>
@@ -137,7 +140,7 @@
         <main class="middle-content">
         <div id="outcomeModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">×</span>
                 <p>Did you hold the winning hand?</p>
                 <input type="button" id="winButton" value="Yes!!">
                 <input type="button" id="lossButton" value="No">
@@ -197,7 +200,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="handCardValues2" id="handCardValues2">
                             <option value="none" selected disabled hidden>Select Hand Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -249,7 +252,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="flopCardValues2" id="flopCardValues2">
                             <option value="none" selected disabled hidden>Select Flop Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -273,7 +276,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="flopCardValues3" id="flopCardValues3">
                             <option value="none" selected disabled hidden>Select Flop Card 3 Value</option>
                             <option value="ace">Ace</option>
@@ -372,6 +375,7 @@
                     <button type="button" id="searchButton" name="historySearch">Search</button>
                 </div>
             </div>
+        </div>
         </main>
         <footer class="stats-table">
             <div>
