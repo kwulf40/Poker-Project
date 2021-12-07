@@ -1,7 +1,37 @@
 <?php
     require_once "config.php";
+<<<<<<< HEAD:pokertool.html
 
+=======
+    
+>>>>>>> f6dce1858f5eac667eba7823754ac450e6215bd5:pokertool.php
     session_start();
+
+    $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
+
+    if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
+        $gameHistoryGamesArray = Array();
+        mysqli_stmt_bind_param($userGameInformationStatement, "i", $_SESSION["id"]);
+        if(mysqli_stmt_execute($userGameInformationStatement)){
+            $gameHistory = mysqli_stmt_get_result($userGameInformationStatement);
+            $gameHistoryRows = mysqli_num_rows($gameHistory);
+            while ($game = mysqli_fetch_row($gameHistory)) {
+	            $gameInfoArray = Array();
+                //Place game info in game Info array
+		        foreach ($game as $gameData) {
+                    array_push($gameInfoArray, $gameData);
+                }
+                //Place the entire game into the History array
+	            array_push($gameHistoryGamesArray, $gameInfoArray);
+            }
+        }
+        else{
+            echo "Error executing game history statement";
+        }
+    }
+    else{
+        echo "Error preparing game history statement";
+    }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST['handCardValues1'])){
@@ -343,27 +373,6 @@
                     Game: 1 <br>
                     Hand: AD 9H <br>
                     Table: 5C 7D KD 3S 7H <br>
-                </div>
-                <div>
-                    Game: 2 <br>
-                    Hand: 3C 6S <br>
-                    Table: JH QD JD 7H 8S <br>
-                </div>
-                <div>
-                    Game: 3 <br>
-                    Hand: 10S 10H <br>
-                    Table: 8H 10D 9H 7H 10C <br>
-                </div>
-                <div>
-                    Game: 4 <br>
-                    Hand: 4H AC <br>
-                    Table: 5S 10H <br>
-                </div>
-                <div>
-                    Game: 5 <br>
-                    Hand: 2S 7J <br>
-                    Table: NA <br>
-                </div>
             </div>
         </main>
         <footer class="stats-table">
@@ -413,5 +422,9 @@
                 GAME STATS: TBD <br>
             </div>
         </footer>
+        <script>
+            var gameDataArray = <?php echo json_encode($gameHistoryGamesArray); ?>;
+            var numberOfHistoryGames = <?php echo $gameHistoryRows; ?>;
+        </script>
     </body>
 </html>

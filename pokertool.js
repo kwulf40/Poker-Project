@@ -1,8 +1,11 @@
+var gameHistoryDiv = "";
+
 window.onload = document.addEventListener("DOMContentLoaded", function(){
     initializeValues()
 });
 
 function initializeValues() {
+    gameHistoryDiv = document.getElementsByClassName("gameHistory")[0];
     document.getElementById("handCardValues1").addEventListener("change", function(){
         updateCard("hand1")
     });
@@ -83,6 +86,10 @@ function initializeValues() {
         modal.style.display = "none";
         gameForm.submit();
     });
+
+    if(gameDataArray != ""){
+        generateHistory();
+    }
 }
 
 function updateCard(cardName){
@@ -313,5 +320,29 @@ function submitValidateInfo() {
     }
     else{
         outcomeModal.style.display = "block";
+    }
+}
+
+function generateHistory(){
+    for (numberOfHistoryGames; numberOfHistoryGames>=1; numberOfHistoryGames--){
+        var arrayIndex = (numberOfHistoryGames - 1);
+        var gameDiv = document.createElement("div");
+        var gameID = document.createTextNode("ID: " + gameDataArray[arrayIndex][0]);
+        var gameNumber = document.createTextNode("Game Number: " + gameDataArray[arrayIndex][1]);
+        var boardCards = document.createTextNode("Board Cards: " + gameDataArray[arrayIndex][2]);
+        var handCards = document.createTextNode("Hand Cards: " + gameDataArray[arrayIndex][3]);
+        var outcome = document.createTextNode("Outcome: " + gameDataArray[arrayIndex][4]);
+
+        gameDiv.append(gameID);
+        gameDiv.append(document.createElement("br"));
+        gameDiv.append(gameNumber);
+        gameDiv.append(document.createElement("br"));
+        gameDiv.append(boardCards);
+        gameDiv.append(document.createElement("br"));
+        gameDiv.append(handCards);
+        gameDiv.append(document.createElement("br"));
+        gameDiv.append(outcome);
+
+        gameHistoryDiv.parentNode.insertBefore(gameDiv, gameHistoryDiv.nextSibling);
     }
 }
