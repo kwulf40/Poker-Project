@@ -195,7 +195,9 @@
                 <div class="cards">
                     <form id="gameSubmit" name="gameSubmit" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> 
                     <div>
-                        <label>Please enter your cards on hand:&nbsp;</label>
+                        <label>Please enter your cards on hand:</label>
+                    </div>
+                    <div>
                         <select name="handCardValues1" id="handCardValues1">
                             <option value="none" selected disabled hidden>Select Hand Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -245,7 +247,9 @@
                         </select>
                     </div>
                     <div>
-                        <label>Please enter the three cards in the flop:&nbsp;</label>
+                        <label>Please enter the three cards in the flop:</label>
+                    </div>
+                    <div>
                         <select name="flopCardValues1" id="flopCardValues1">
                             <option value="none" selected disabled hidden>Select Flop Card 1 Value</option>
                             <option value="ace">Ace</option>
@@ -320,6 +324,8 @@
                     </div>
                     <div id="turnDiv" hidden>
                         <label>Please enter the turn card:</label>
+                    </div>
+                    <div id="turnCardDiv" hidden>
                         <select name="turnCardValues" id="turnCardValues">
                             <option value="none" selected disabled hidden>Select Turn Card Value</option>
                             <option value="ace">Ace</option>
@@ -346,6 +352,8 @@
                     </div>
                     <div id="riverDiv" hidden>
                         <label>Please enter the river card:</label>
+                    </div>
+                    <div id="riverCardDiv" hidden>
                         <select name="riverCardValues" id="riverCardValues">
                             <option value="none" selected disabled hidden>Select River Card Value</option>
                             <option value="ace">Ace</option>
@@ -378,7 +386,7 @@
                     </div>
                     <input type="hidden" id="outcomeValue" name="outcomeValue" value="">
                     <p id="submitError"></p>
-                    </form>
+                </form>
                 </div>
             </div>
             <div class="prev-games">
