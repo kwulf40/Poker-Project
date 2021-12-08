@@ -11,44 +11,49 @@
              * Add check for self account delete
              */
             $deleteUsername = trim($_POST["deleteText"]);
-            $userCheck = verifyUsername($link, $deleteUsername);
-            if ($userCheck == true){
-                $sqlDeleteStatement = "DELETE FROM USERS WHERE username=?";
-            
-                if($deleteStatement = mysqli_prepare($link, $sqlDeleteStatement)){
-                    mysqli_stmt_bind_param($deleteStatement, "s", $deleteUsername);
-   
-                    //Submit SQL Statment
-                    if(mysqli_stmt_execute($deleteStatement)){
-                        $deleteResultMessage="Delete Successful!";
-
-                        $sqlDeleteLogStatement="INSERT INTO ADMIN (USER_ID, ACTION_NAME, ACTION_DESC, TIME) VALUES (?,?,?,NOW())";
-                        if($deleteLogStatement = mysqli_prepare($link, $sqlDeleteLogStatement)){
-                            mysqli_stmt_bind_param($deleteLogStatement, "sss", $adminID, $action, $actionDesc);
-
-                            $adminID=$_SESSION["id"];
-                            $action="Delete Account";
-                            $actionDesc=$_SESSION["username"]." deletes ".$deleteUsername;
-
-                            if(mysqli_stmt_execute($deleteLogStatement)){
-                                $deleteResultMessage="User Successfully Deleted.";
-                            }
-                            else{
-                                $deleteResultMessage="Error submitting Delete Log.";
-                            }
-                        }
-                        else{
-                            $deleteResultMessage="Error preparing log statment.";
-                        } 
-                    }
-                    else{
-                        $deleteResultMessage="Error Deleting";
-                    }
-                    mysqli_stmt_close($deleteStatement);
-                }
+            if ($deleteUsername == $_SESSION["username"]){
+                $deleteResultMessage="Cannot delete the account you're logged in with!.";
             }
             else{
-                $deleteResultMessage="Username does not exist";
+                $userCheck = verifyUsername($link, $deleteUsername);
+                if ($userCheck == true){
+                    $sqlDeleteStatement = "DELETE FROM USERS WHERE username=?";
+                
+                    if($deleteStatement = mysqli_prepare($link, $sqlDeleteStatement)){
+                        mysqli_stmt_bind_param($deleteStatement, "s", $deleteUsername);
+    
+                        //Submit SQL Statment
+                        if(mysqli_stmt_execute($deleteStatement)){
+                            $deleteResultMessage="Delete Successful!";
+
+                            $sqlDeleteLogStatement="INSERT INTO ADMIN (USER_ID, ACTION_NAME, ACTION_DESC, TIME) VALUES (?,?,?,NOW())";
+                            if($deleteLogStatement = mysqli_prepare($link, $sqlDeleteLogStatement)){
+                                mysqli_stmt_bind_param($deleteLogStatement, "sss", $adminID, $action, $actionDesc);
+
+                                $adminID=$_SESSION["id"];
+                                $action="Delete Account";
+                                $actionDesc=$_SESSION["username"]." deletes ".$deleteUsername;
+
+                                if(mysqli_stmt_execute($deleteLogStatement)){
+                                    $deleteResultMessage="User Successfully Deleted.";
+                                }
+                                else{
+                                    $deleteResultMessage="Error submitting Delete Log.";
+                                }
+                            }
+                            else{
+                                $deleteResultMessage="Error preparing log statment.";
+                            } 
+                        }
+                        else{
+                            $deleteResultMessage="Error Deleting";
+                        }
+                        mysqli_stmt_close($deleteStatement);
+                    }
+                }
+                else{
+                    $deleteResultMessage="Username does not exist";
+                }
             }
         }
         elseif (isset($_POST['resetText'])){

@@ -107,35 +107,36 @@
 
             //Attempt to execute the prepared statement
             if(mysqli_stmt_execute($insertStatement)){
-
+                mysqli_stmt_close($insertStatement);
                 //If the statement executes successfully, create a new statement to retrieve newly created ID value.
                 $sqlAccountInfoSelect = "SELECT id, admin FROM USERS WHERE username=?";
                 
                 if($accountSelectStatement = mysqli_prepare($link, $sqlAccountInfoSelect)){
                     //Bind Variables to statment
-                    mysqli_stmt_bind_param($accountSelectStatement, "s", $insertedUsername);
-                    
-                    //Prepare Statment Parameter
-                    $insertedUsername = trim($_POST["username"]);
+                    mysqli_stmt_bind_param($accountSelectStatement, "s", $submitFinalUsername);
                     
                     //Submit SQL Statment
                     if(mysqli_stmt_execute($accountSelectStatement)){
                         mysqli_stmt_store_result($accountSelectStatement);
                         mysqli_stmt_bind_result($accountSelectStatement, $id, $adminBool);
-                        mysqli_stmt_fetch($accountSelectStatment);
-
-                        session_start();
+                        if (mysqli_stmt_fetch($accountSelectStatement)){
+                            session_start();
                             
-                        // Store data in session variables
-                        $_SESSION["loggedIn"] = true;
-                        $_SESSION["id"] = $id;
-                        $_SESSION["username"] = $username;
-                        $_SESSION["admin"] = $adminBool;
-                        $_SESSION["gameNumber"] = 0;  
-                        // Redirect to homepage
-                        header("location: homepage.php");
+                            // Store data in session variables
+                            $_SESSION["loggedIn"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;
+                            $_SESSION["admin"] = $adminBool;
+                            $_SESSION["gameNumber"] = 0;  
+                            // Redirect to homepage
+                            header("location: homepage.php");
+                        }
+                        else{
+                            echo "Error: " . mysqli_error($link);
+                        }
                         mysqli_stmt_close($accountSelectStatement);
                     }
+                    else {echo mysqli_error($link);}
                 } 
                 else{
                     echo "Oops! Something went wrong. Please try again later.";
