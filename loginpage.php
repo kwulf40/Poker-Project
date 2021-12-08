@@ -118,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     echo '<div class="emptyLoginError">' . $loginError . '</div>';
                 }        
                 ?>
-                <h1 id="loginHeader">Login</h1>
+                <h1>Login</h1>
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <!--New Username Section-->
                     <label>Username:</label>
