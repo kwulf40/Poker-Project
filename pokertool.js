@@ -231,6 +231,7 @@ function parseInputToCardImage(card){
 
 function revealTurn() {
     var turnDiv = document.getElementById('turnDiv');
+    var turnCardDiv = document.getElementById('turnCardDiv');
     var turnButton = document.getElementById('continueToTurn');
     var riverButton = document.getElementById('continueToRiver');
     
@@ -242,6 +243,7 @@ function revealTurn() {
 
 function revealRiver() {
     var riverDiv = document.getElementById('riverDiv');
+    var riverCardDiv = document.getElementById('riverCardDiv');
     var riverButton = document.getElementById('continueToRiver');
     
     riverDiv.hidden = false;

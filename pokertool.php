@@ -2,6 +2,12 @@
     require_once "config.php";
     
     session_start();
+
+    if(!(isset($_SESSION["loggedIn"])) || $_SESSION["loggedIn"] != true){
+        header("location: homepage.php");
+        exit;
+    }
+    
     $gameHistoryGamesArray = Array();
     $gameHistoryRows = 0;
 
@@ -102,6 +108,7 @@
             echo "Error preparing game history statement";
         }
     }
+   
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +147,7 @@
         <main class="middle-content">
         <div id="outcomeModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close">×</span>
                 <p>Did you hold the winning hand?</p>
                 <input type="button" id="winButton" value="Yes!!">
                 <input type="button" id="lossButton" value="No">
@@ -200,7 +207,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="handCardValues2" id="handCardValues2">
                             <option value="none" selected disabled hidden>Select Hand Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -252,7 +259,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="flopCardValues2" id="flopCardValues2">
                             <option value="none" selected disabled hidden>Select Flop Card 2 Value</option>
                             <option value="ace">Ace</option>
@@ -276,7 +283,7 @@
                             <option value="spades">Spade</option>
                             <option value="clubs">Club</option>
                         </select>
-                        <label>&nbsp;</label>
+                        <label> </label>
                         <select name="flopCardValues3" id="flopCardValues3">
                             <option value="none" selected disabled hidden>Select Flop Card 3 Value</option>
                             <option value="ace">Ace</option>
