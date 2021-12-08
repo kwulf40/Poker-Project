@@ -231,19 +231,23 @@ function parseInputToCardImage(card){
 
 function revealTurn() {
     var turnDiv = document.getElementById('turnDiv');
+    var turnCardDiv = document.getElementById('turnCardDiv');
     var turnButton = document.getElementById('continueToTurn');
     var riverButton = document.getElementById('continueToRiver');
     
     turnDiv.hidden = false;
+    turnCardDiv.hidden = false;
     turnButton.hidden = true;
     riverButton.hidden = false;
 }
 
 function revealRiver() {
     var riverDiv = document.getElementById('riverDiv');
+    var riverCardDiv = document.getElementById('riverCardDiv');
     var riverButton = document.getElementById('continueToRiver');
     
     riverDiv.hidden = false;
+    riverCardDiv.hidden = false;
     riverButton.hidden = true;
 }
 
@@ -272,7 +276,9 @@ function cardReset() {
     cardImage6.hidden = true;
     cardImage7.hidden = true;
     turnDiv.hidden = true;
+    turnCardDiv.hidden = true;
     riverDiv.hidden = true;
+    riverCardDiv.hidden = true;
     riverButton.hidden = true;
 
     turnButton.hidden = false;
