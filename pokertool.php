@@ -135,11 +135,13 @@
                     </a>
                 </li>
                 <!-- only if admin -->
-                <li class="admin-settings">
-                    <a href="admin.php">
-                        Admin Settings
-                    </a>
-                </li>
+                <?php
+                    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                        echo "<li class=\"admin-settings\">";
+                        echo "<a href=\"admin.php\">Admin Settings</a>";
+                        echo "</li>";
+                    }
+		        ?>
             </ul>
         </nav>
         <main class="middle-content">

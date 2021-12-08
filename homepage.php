@@ -20,8 +20,9 @@
                             Home
                         </a>
                     </li>
-					<?php
-					if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+
+					          <?php
+					          if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
                         echo "<li class=\"homepage-pokertool\">";
                         echo "<a href=\"pokertool.php\">Poker Tool</a>";
                         echo "</li>";

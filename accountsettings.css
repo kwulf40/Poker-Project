@@ -1,17 +1,15 @@
-body,
-html {
+body,html {
   height: 100%;
   margin: 0;
 }
 
-.bg {
+body {
   background-image: url("site-images/Poker-background-2.jpg");
-
   height: 100%;
-
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 @media only screen and (max-height: 600px) {
@@ -81,21 +79,30 @@ li a:hover {
   display: grid;
   width: 25vw;
   padding: 30px;
-  margin-top: 7vh;
+  margin-top: 20vh;
   margin-left: auto;
   margin-right: auto;
 }
 
-.account-control > #submission {
-  display: grid;
+h1 {
+  text-align: center;
+  color: rgb(65, 65, 65);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-input {
-  width: 25vw;
+@media only screen and (max-width: 1000px) {
+  .account-control{
+      width: 50vw;
+  }
+}
+
+.account-control * {
+  display: grid;
 }
 
 label {
   font-family: Arial, Helvetica, sans-serif;
+  padding: 2px;
 }
 
 button {
@@ -105,11 +112,4 @@ button {
 button:hover {
   background-color: rgba(20, 20, 20, 0.89);
   color: white;
-}
-
-h1 {
-  top: 30%;
-  font-size: 4vw;
-  text-align: center;
-  color: aliceblue;
 }

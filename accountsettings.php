@@ -143,16 +143,18 @@
                             Poker Tool
                         </a>
                     </li>
-                    <li class="admin">
-                        <a href="admin.php" hidden>
-                            Admin Settings
-                        </a>
-                    </li>
+		    <?php
+		        if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                    echo "<li class=\"admin\">";
+                    echo "<a href=\"admin.php\">Admin Settings</a>";
+                    echo "</li>";
+                }
+		    ?>
                 </ul>
             </nav>
             <!-- End header HTML-->
-            <h1>Account Control</h1>
             <div class="account-control">
+                <h1>Account Settings</h1>
                 <label>Account Name: <?php echo $_SESSION["username"]?></label><br>
                 <form id="submission" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                     <label>Current Password:</label>
@@ -167,11 +169,11 @@
                     <button type="submit" id="submitBtn" name="submit">Submit</button><br>
                 </form>
                 <form id="reset" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <input type="submit" id="resetAccount" name="resetAccount" value="Reset Account"><br>
+                    <button type="submit" id="resetAccount" name="resetAccount" value="Reset Account">Reset Account</button><br>
                     <p class="submitFeedback"><?php echo $resetResultMessage;?></p>
                 </form>
                 <form id="logout" action="logoutpage.php">
-                    <input type="submit" id="logoutBtn" value="Logout"><br>
+                    <button type="submit" id="logoutBtn" value="Logout">Logout</button><br>
                 </form>
             </div>
         </div>
