@@ -20,12 +20,12 @@
                             Home
                         </a>
                     </li>
-                    <li class="homepage-pokertool">
-                        <a href="pokertool.php">
-                            Poker Tool
-                        </a>
-                    </li>
-                    <?php
+					<?php
+					if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
+                        echo "<li class=\"homepage-pokertool\">";
+                        echo "<a href=\"pokertool.php\">Poker Tool</a>";
+                        echo "</li>";
+                    }
                     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] === true){
                         echo "<li class=\"account\">";
                         echo "<a href=\"accountsettings.php\">Welcome, ".htmlspecialchars($_SESSION["username"])."!</a>";
@@ -35,7 +35,7 @@
                         echo "</li>";
                         if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
                             echo "<li class=\"account\">";
-                            echo "<a href=\"admin.php\">Admin</a>";
+                            echo "<a href=\"admin.php\">Admin Settings</a>";
                             echo "</li>";
                         }
                     }
