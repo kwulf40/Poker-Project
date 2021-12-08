@@ -98,8 +98,9 @@ li *:hover {
     display: flex;
 }
 
-.current-game .cards div {
+.cards div {
     justify-content: center;
+    padding: 5px;
 }
 
 .table{
@@ -190,11 +191,8 @@ li *:hover {
 
 .current-game .cards {
     background-color: #e2e2e2;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 10px;
+    justify-content: center;
+    padding-top: 25px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -202,8 +200,8 @@ li *:hover {
         width: 220px;
     }
     .cards div{
-        padding: 10px;
         display: grid;
+        padding: 5px;
     }
     .cards div select {
         width: 220px;
@@ -233,6 +231,7 @@ li *:hover {
     padding: 20px;
     flex-wrap: wrap;
     display: flex;
+    font-size: 11px;
     background-image:linear-gradient(white, lightgrey)
 }
 

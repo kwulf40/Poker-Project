@@ -91,9 +91,9 @@ li a:hover {
     color: rgb(65, 65, 65);
 }
 
-h1 {
+.createAccount #haveLogin {
     padding-top: 20px;
-    text-align: center;
+    justify-items: center;
 }
 
 input {

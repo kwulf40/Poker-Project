@@ -143,11 +143,13 @@
                             Poker Tool
                         </a>
                     </li>
-                    <li class="admin">
-                        <a href="admin.php" hidden>
-                            Admin Settings
-                        </a>
-                    </li>
+		    <?php
+		        if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                    echo "<li class=\"admin\">";
+                    echo "<a href=\"admin.php\">Admin Settings</a>";
+                    echo "</li>";
+                }
+		    ?>
                 </ul>
             </nav>
             <!-- End header HTML-->

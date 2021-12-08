@@ -2,32 +2,10 @@
     require_once "config.php";
     
     session_start();
+    $gameHistoryGamesArray = Array();
+    $gameHistoryRows = 0;
 
-    $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
-
-    if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
-        $gameHistoryGamesArray = Array();
-        mysqli_stmt_bind_param($userGameInformationStatement, "i", $_SESSION["id"]);
-        if(mysqli_stmt_execute($userGameInformationStatement)){
-            $gameHistory = mysqli_stmt_get_result($userGameInformationStatement);
-            $gameHistoryRows = mysqli_num_rows($gameHistory);
-            while ($game = mysqli_fetch_row($gameHistory)) {
-	            $gameInfoArray = Array();
-                //Place game info in game Info array
-		        foreach ($game as $gameData) {
-                    array_push($gameInfoArray, $gameData);
-                }
-                //Place the entire game into the History array
-	            array_push($gameHistoryGamesArray, $gameInfoArray);
-            }
-        }
-        else{
-            echo "Error executing game history statement";
-        }
-    }
-    else{
-        echo "Error preparing game history statement";
-    }
+    updateGameInfo($link, $gameHistoryGamesArray, $gameHistoryRows);
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (isset($_POST['handCardValues1'])){
@@ -94,6 +72,35 @@
         else{
             //other
         }
+        updateGameInfo($link, $gameHistoryGamesArray, $gameHistoryRows);
+    }
+    
+    function updateGameInfo($link, &$gameHistoryGamesArray, &$gameHistoryRows){
+        $sqlUserGameInformationStatement = "SELECT * FROM GAMES WHERE user_id=?";
+
+        if($userGameInformationStatement = mysqli_prepare($link, $sqlUserGameInformationStatement)){
+            $gameHistoryGamesArray = Array();
+            mysqli_stmt_bind_param($userGameInformationStatement, "i", $_SESSION["id"]);
+            if(mysqli_stmt_execute($userGameInformationStatement)){
+                $gameHistory = mysqli_stmt_get_result($userGameInformationStatement);
+                $gameHistoryRows = mysqli_num_rows($gameHistory);
+                while ($game = mysqli_fetch_row($gameHistory)) {
+                    $gameInfoArray = Array();
+                    //Place game info in game Info array
+                    foreach ($game as $gameData) {
+                        array_push($gameInfoArray, $gameData);
+                    }
+                    //Place the entire game into the History array
+                    array_push($gameHistoryGamesArray, $gameInfoArray);
+                }
+            }
+            else{
+                echo "Error executing game history statement";
+            }
+        }
+        else{
+            echo "Error preparing game history statement";
+        }
     }
 ?>
 
@@ -121,11 +128,13 @@
                     </a>
                 </li>
                 <!-- only if admin -->
-                <li class="admin-settings">
-                    <a href="admin.php">
-                        Admin Settings
-                    </a>
-                </li>
+                <?php
+                    if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1){
+                        echo "<li class=\"admin-settings\">";
+                        echo "<a href=\"admin.php\">Admin Settings</a>";
+                        echo "</li>";
+                    }
+		        ?>
             </ul>
         </nav>
         <main class="middle-content">
@@ -365,8 +374,8 @@
                     <input type="number" id="historySearch" name="historySearch">
                     <button type="button" id="searchButton" name="historySearch">Search</button>
                 </div>
-
             </div>
+        </div>
         </main>
         <footer class="stats-table">
             <div>

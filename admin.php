@@ -42,7 +42,7 @@
                         } 
                     }
                     else{
-                        $deleteResultMessage="Error Deleting";
+                        $deleteResultMessage="Cannot delete your own account";
                     }
                     mysqli_stmt_close($deleteStatement);
                 }
